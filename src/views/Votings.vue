@@ -6,7 +6,7 @@
         <img src="../assets/outfit1.png" class="card-img-top" alt="Outfit1">
         <div class="card-body">
           <h5 class="card-title">This</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text">Button</p>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
         <img src="../assets/outfit2.png" class="card-img-top" alt="Outfit2">
         <div class="card-body">
           <h5 class="card-title">That</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text">Button</p>
         </div>
       </div>
     </div>
