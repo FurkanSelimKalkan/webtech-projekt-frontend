@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
+    const endpoint = 'localhost:8080/api/v1/votings'
     const requstOptions = {
       method: 'GET',
       redirect: 'follow'
