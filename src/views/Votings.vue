@@ -31,11 +31,6 @@ export default {
         return require('../assets/outfit2.png')
       }
     },
-    getSecondImage (voting) {
-      if (voting.image1 === 'Outfit1.url') {
-        return require('../assets/outfit1.png')
-      }
-    }
   },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
