@@ -30,7 +30,7 @@ export default {
       } else if (voting.image2 === 'Outfit2.url') {
         return require('../assets/outfit2.png')
       }
-    },
+    }
   },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
