@@ -27,7 +27,7 @@ export default {
     getAvatar (voting) {
       if (voting.image1 === 'Outfit1.url') {
         return require('../assets/outfit1.png')
-      } else if (voting.image2 === 'Outfit2.url') {
+      } else if (voting.image1 === 'Outfit2.url') {
         return require('../assets/outfit2.png')
       }
     }
