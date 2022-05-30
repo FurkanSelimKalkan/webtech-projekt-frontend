@@ -5,7 +5,7 @@
         <div class="owncard">
           <h5 class="owncard-title">{{ voting.title }}</h5>
 
-          <img :src="getAvatar(voting)" class="owncard-img-top" :alt=" voting.title"> <img :src="getAvatar(voting)" class="owncard-img-top" :alt=" voting.title">
+          <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar(voting)" class="image2" :alt=" voting.title">
           <div class="owncard-body">
 <table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr></table>
           </div>
@@ -56,7 +56,13 @@ export default {
  position: relative;
   top: 10px;
 }
-.owncard-img-top{
+.image1{
+  position: relative;
+  z-index:1;
+}
+
+.image2{
+  position: relative;
 }
 
 .owncard {
