@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-light">
-    <a class="navbar-brand" href="#">This or That</a>
+    <img alt="Home Logo" src="../assets/logo.png" height="125">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
