@@ -63,6 +63,7 @@ export default {
   display: inline-block;
   border: 2px solid lightgray;
   margin-top: 20px;
+  white-space: nowrap;
 }
 
 .owncard-title{
