@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-light">
-    <img alt="Home Logo" src="../assets/logo.png" height="125">
+    <a href="https://this-or-that-webapp-frontend.herokuapp.com/">
+    <img alt="Home Logo" src="../assets/logo.png" height="50">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
