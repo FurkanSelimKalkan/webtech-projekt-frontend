@@ -1,16 +1,18 @@
 <template>
   <div class="gimmespace">
-    <div class="body"><div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col" v-for="voting in votings" :key="voting.id">
-        <div class="card">
-          <img :src="getAvatar(voting)" class="card-img-top" :alt=" voting.title">
-          <div class="card-body">
-            <h5 class="card-title">{{ voting.title }}</h5>
-            <p class="card-text">Button</p>
+    <div class="body"><div class="own">
+      <div class="owncol" v-for="voting in votings" :key="voting.id">
+        <div class="owncard">
+          <h5 class="owncard-title">{{ voting.title }}</h5>
+
+          <img :src="getAvatar(voting)" class="owncard-img-top" :alt=" voting.title"> <img :src="getAvatar(voting)" class="owncard-img-top" :alt=" voting.title">
+          <div class="owncard-body">
+<table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr></table>
           </div>
         </div>
       </div>
     </div></div>
+
   </div>
 
 </template>
@@ -53,6 +55,23 @@ export default {
 .gimmespace {
  position: relative;
   top: 10px;
+}
+.owncard-img-top{
+}
+
+.owncard {
+  display: inline-block;
+  border: 2px solid lightgray;
+  margin-top: 20px;
+}
+
+.owncard-title{
+  margin-top: 10px;
+}
+
+.tab{
+  width: 100%;
+  margin-top: 10px;
 }
 
 </style>
