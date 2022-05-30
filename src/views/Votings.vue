@@ -59,10 +59,12 @@ export default {
 .image1{
   position: relative;
   z-index:1;
+  max-width: 50%;
 }
 
 .image2{
   position: relative;
+  max-width: 50%;
 }
 
 .owncard {
