@@ -7,7 +7,9 @@
 
           <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar(voting)" class="image2" :alt=" voting.title">
           <div class="owncard-body">
-<table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr></table>
+<table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
+<td>{{voting.votingsImage1}} Votes</td><td>{{voting.votingsImage2}} Votes</td></table>
+
           </div>
         </div>
       </div>
@@ -32,6 +34,9 @@ export default {
       } else if (voting.image1 === 'Outfit2.url') {
         return require('../assets/outfit2.png')
       }
+    },
+    getVotings1 (voting) {
+      return voting.votings_image_1
     }
   },
   mounted () {
@@ -79,8 +84,14 @@ export default {
 }
 
 .tab{
+  margin-left:auto;
+  margin-right:auto;
   width: 100%;
   margin-top: 10px;
+  text-align: center;
 }
 
+.owncard-text{
+  text-align: center;
+}
 </style>
