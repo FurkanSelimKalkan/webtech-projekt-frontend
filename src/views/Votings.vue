@@ -8,7 +8,7 @@
           <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar(voting)" class="image2" :alt=" voting.title">
           <div class="owncard-body">
 <table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
-<td>{{voting.votingsImage1}} Votes</td><td>{{voting.votingsImage2}} Votes</td></table>
+<td>{{voting.votingsImage1}} Votes</td><td>{{voting.votingsImage2}} Votess</td></table>
 
           </div>
         </div>
