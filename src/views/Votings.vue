@@ -48,7 +48,7 @@ export default {
     },
 
     putUpvote1 (voting) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/1'
       const headers = new Headers()
       headers.append('Content-Type', 'application/json')
       const update = JSON.stringify({
