@@ -8,7 +8,7 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <form class="text-start needs-validation" id="votings-create-form" novalidate>
+      <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input type=text class="form-control" id=title v-model=title required>
@@ -20,14 +20,14 @@
           <label for="image1" class="form-label">Image1</label>
           <input type=text class="form-control" id=image1 v-model=image1 required>
           <div class="invalid-feedback">
-            Please provide the last name.
+            Please provide a image URL.
           </div>
         </div>
         <div class="mb-3">
           <label for=image2 class="form-label">Image2</label>
           <input type=text class="form-control" id=image2 v-model=image2 required>
           <div class="invalid-feedback">
-            Please provide the last name.
+            Please provide a image URL.
           </div>
         </div>
         <div v-if="this.serverValidationMessages">
@@ -58,29 +58,53 @@ export default {
   },
   methods: {
     createVoting () {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
+      const valid = this.validate()
+      if (valid) {
+        const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
 
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
 
-      const playload = JSON.stringify({
-        title: this.title,
-        image1: this.image1,
-        image2: this.image2
+        const playload = JSON.stringify({
+          title: this.title,
+          image1: this.image1,
+          image2: this.image2
+        })
+
+        var requestOptions = {
+          method: 'POST',
+          headers: headers,
+          body: playload,
+          redirect: 'follow'
+        }
+
+        fetch(endpoint, requestOptions)
+          .catch(error => console.log('error', error))
+      }
+    },
+    validate () {
+      let valid = true
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            valid = false
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
       })
 
-      var requestOptions = {
-        method: 'POST',
-        headers: headers,
-        body: playload,
-        redirect: 'follow'
-      }
-
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
+      return valid
     }
   }
 }
+
 </script>
 
 <style scoped>
