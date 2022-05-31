@@ -4,10 +4,9 @@
       <div class="owncol" v-for="voting in votings" :key="voting.id">
         <div class="owncard">
           <h5 class="owncard-title">{{ voting.title }}</h5>
-
-          <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar(voting)" class="image2" :alt=" voting.title">
+          <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar2(voting)" class="image1" :alt=" voting.title">
           <div class="owncard-body">
-<table class ="tab"><tr><th><p class="owncard-text">Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
+<table class ="tab"><tr><th><p class="owncard-text"><button onclick="putUpvote1(voting)" >Click me</button>Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
 <td>{{voting.votingsImage1}} Votes</td><td>{{voting.votingsImage2}} Votess</td></table>
 
           </div>
@@ -35,17 +34,47 @@ export default {
         return require('../assets/outfit2.png')
       }
     },
+
+    getAvatar2 (voting) {
+      if (voting.image2 === 'Picture2.Url') {
+        return require('../assets/outfit2.png')
+      } else if (voting.image2 === 'Outfit1.url') {
+        return require('../assets/outfit1.png')
+      }
+    },
+
     getVotings1 (voting) {
       return voting.votings_image_1
+    },
+
+    putUpvote1 (voting) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
+      const headers = new Headers()
+      headers.append('Content-Type', 'application/json')
+      const update = JSON.stringify({
+        voting: voting,
+        title: voting.title,
+        image1: voting.image1,
+        image2: voting.image2,
+        votingsImage1: voting.votingsImage1 + 1,
+        votingsImage2: voting.votingsImage2 + 1
+      })
+      const requstOptions = {
+        method: 'PUT',
+        headers: headers,
+        body: update,
+        redirect: 'follow'
+      }
+      fetch(endpoint, requstOptions)
     }
   },
+
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
     const requstOptions = {
       method: 'GET',
       redirect: 'follow'
     }
-
     fetch(endpoint, requstOptions)
       .then(response => response.json())
       .then(result => result.forEach(voting => {
@@ -53,6 +82,7 @@ export default {
       }))
       .catch(error => console.log('error', error))
   }
+
 }
 </script>
 
