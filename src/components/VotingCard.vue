@@ -1,10 +1,11 @@
 <template>
   <div class="card h-100">
     <img :src="getAvatar(voting)" class="card-img-top" :alt="voting.title">
+    <img :src="getAvatar2(voting)" class="card-img-top" :alt="voting.title">
     <div class="card-body">
-      <h5 class="card-title">{{ voting.votingsimage1 }} {{ voting.votingsimage2 }}</h5>
+      <h5 class="card-title">{{ voting.title }}</h5>
       <p class="card-text">
-        {{ voting.votingsimage1 }} {{ voting.votingsimage2 }}
+        ...................................
       </p>
     </div>
   </div>
@@ -40,5 +41,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
