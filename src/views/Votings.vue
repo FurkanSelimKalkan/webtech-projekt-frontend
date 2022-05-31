@@ -6,7 +6,7 @@
           <h5 class="owncard-title">{{ voting.title }}</h5>
           <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar2(voting)" class="image1" :alt=" voting.title">
           <div class="owncard-body">
-<table class ="tab"><tr><th><p class="owncard-text"><button onclick="putUpvote1(voting)" >Click me</button>Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
+<table class ="tab"><tr><th><p class="owncard-text"><button :onclick="putUpvote1(voting)" >Click me</button>Links</p></th><th><p class="owncard-text">Rechts</p></th></tr>
 <td>{{voting.votingsImage1}} Votes</td><td>{{voting.votingsImage2}} Votess</td></table>
 
           </div>
@@ -48,7 +48,8 @@ export default {
     },
 
     putUpvote1 (voting) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/1'
+      var thisid = voting.id
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
       const headers = new Headers()
       headers.append('Content-Type', 'application/json')
       const update = JSON.stringify({
