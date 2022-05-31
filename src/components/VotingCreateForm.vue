@@ -5,27 +5,27 @@
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
       <h5 id="offcanvas-label">New Voting</h5>
-      <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <form class="text-start needs-validation" id="votings-create-form" novalidate>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" v-model="title" required>
+          <input type=text class="form-control" id=title v-model=title required>
           <div class="invalid-feedback">
             Please provide the title.
           </div>
         </div>
         <div class="mb-3">
           <label for="image1" class="form-label">Image1</label>
-          <input type="text" class="form-control" id="image1" v-model="image1" required>
+          <input type=text class="form-control" id=image1 v-model=image1 required>
           <div class="invalid-feedback">
             Please provide the last name.
           </div>
         </div>
         <div class="mb-3">
-          <label for="image2" class="form-label">Image2</label>
-          <input type="text" class="form-control" id="image2" v-model="image2" required>
+          <label for=image2 class="form-label">Image2</label>
+          <input type=text class="form-control" id=image2 v-model=image2 required>
           <div class="invalid-feedback">
             Please provide the last name.
           </div>
