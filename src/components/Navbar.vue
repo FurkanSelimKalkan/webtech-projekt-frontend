@@ -1,23 +1,15 @@
 <template>
   <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-light">
-    <a href="https://this-or-that-webapp-frontend.herokuapp.com/">
     <img alt="Home Logo" src="../assets/logo.png" height="50">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
           <router-link class="nav-link" to="/">Home</router-link>
-        </li>
-        <li class="nav-item">
           <router-link class="nav-link" to="/about">About</router-link>
-        </li>
-        <li class="nav-item">
           <router-link class="nav-link" to="/votings">Votings</router-link>
-        </li>
       </ul>
     </div>
   </nav>

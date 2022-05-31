@@ -1,6 +1,6 @@
 <template>
-  <div class="voting h-100">
-    <img :src="getAvatar(voting)" class="card-img-top" :alt="votings.title">
+  <div class="card h-100">
+    <img :src="getAvatar(voting)" class="card-img-top" :alt="voting.title">
     <div class="card-body">
       <h5 class="card-title">{{ voting.votingsimage1 }} {{ voting.votingsimage2 }}</h5>
       <p class="card-text">

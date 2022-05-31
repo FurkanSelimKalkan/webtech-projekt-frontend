@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import VotingsCardList from '@/components/VotingsCardList'
 import VotingsCreateForm from '@/components/VotingCreateForm'
 
 export default {
   name: 'Votings',
   components: {
+    VotingsCardList,
     VotingsCreateForm
   },
   data () {
