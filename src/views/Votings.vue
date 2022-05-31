@@ -13,14 +13,19 @@
         </div>
       </div>
     </div></div>
-
   </div>
+  <votings-create-form @created="addVoting"></votings-create-form>
 
 </template>
 
 <script>
+import VotingsCreateForm from '@/components/VotingCreateForm'
+
 export default {
   name: 'Votings',
+  components: {
+    VotingsCreateForm
+  },
   data () {
     return {
       votings: []
@@ -67,6 +72,18 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requstOptions)
+    },
+
+    addVoting (votingLocation) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + votingLocation
+      const requstOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requstOptions)
+        .then(response => response.json())
+        .then(voting => this.votings.push(voting))
+        .catch(error => console.log('error', error))
     }
   },
 
