@@ -1,5 +1,5 @@
 <template>
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+  <div>
     <div class="col" v-for="voting in votings" :key="voting.id">
       <voting-card :voting="voting"></voting-card>
     </div>

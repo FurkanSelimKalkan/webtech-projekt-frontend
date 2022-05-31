@@ -1,16 +1,31 @@
 <template>
-  <div class="card h-100">
-    <img :src="getAvatar(voting)" class="card-img-top" :alt="voting.title">
-    <img :src="getAvatar2(voting)" class="card-img-top" :alt="voting.title">
-    <div class="card-body">
-      <h5 class="card-title">{{ voting.title }}</h5>
-      <button :onclick="putUpvote1">Click</button>
-      <p>{{voting.votingsImage1}}</p>
-      <p class="card-text">
-        ...................................
-      </p>
+  <div class="gimmespace">
+    <div class="body">
+      <div class="own">
+        <div class="owncard">
+          <h5 class="owncard-title">{{ voting.title }}</h5>
+          <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar2(voting)"
+                                                                                  class="image1" :alt=" voting.title">
+          <div class="owncard-body">
+            <table class="tab">
+              <tr>
+                <th>
+                  <p class="owncard-text">
+                    <button type="submit" @click="putUpvote1">Click</button>
+                  </p>
+                </th>
+                <th><p class="owncard-text">Rechts</p></th>
+              </tr>
+              <td>{{ voting.votingsImage1 }} Votes</td>
+              <td>{{ voting.votingsImage2 }} Votes</td>
+            </table>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -53,7 +68,7 @@ export default {
         image1: image1f,
         image2: image2f,
         votingsImage1: this.voting.votingsImage1 + 1,
-        votingsImage2: this.voting.votingsImage2 + 1
+        votingsImage2: this.voting.votingsImage2
       })
       const requstOptions = {
         method: 'PUT',
@@ -68,4 +83,42 @@ export default {
 </script>
 
 <style scoped>
+.gimmespace {
+  position: relative;
+  top: 10px;
+}
+
+.image1 {
+  position: relative;
+  z-index: 1;
+  max-width: 50%;
+}
+
+.image2 {
+  position: relative;
+  max-width: 50%;
+}
+
+.owncard {
+  display: inline-block;
+  border: 2px solid lightgray;
+  margin-top: 20px;
+  white-space: nowrap;
+}
+
+.owncard-title {
+  margin-top: 10px;
+}
+
+.tab {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.owncard-text {
+  text-align: center;
+}
 </style>
