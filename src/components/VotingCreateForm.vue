@@ -1,8 +1,7 @@
 <template>
-  <div class="staysontop">
   <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas" aria-controls="#votings-create-offcanvas">
     <i class="bi bi-voting-plus-fill">Voting erstellen</i>
-  </button></div>
+  </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
       <h5 id="offcanvas-label">New Voting</h5>
@@ -115,9 +114,6 @@ export default {
   right: 20px;
   padding: 20px 30px;
   border-radius: 300px;
-}
-.staysontop {
-  position: fixed;
-  z-index:9999
+  z-index:9999;
 }
 </style>
