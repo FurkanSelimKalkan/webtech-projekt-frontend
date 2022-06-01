@@ -1,5 +1,6 @@
 <template>
-  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas" aria-controls="#votings-create-offcanvas">
+  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
+          aria-controls="#votings-create-offcanvas">
     <i class="bi bi-voting-plus-fill">Voting erstellen</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
@@ -114,6 +115,6 @@ export default {
   right: 20px;
   padding: 20px 30px;
   border-radius: 300px;
-  z-index:9999;
+  z-index: 9999;
 }
 </style>
