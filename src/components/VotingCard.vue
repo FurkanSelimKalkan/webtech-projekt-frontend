@@ -14,7 +14,11 @@
                     <button type="submit" @click="putUpvote1">Click</button>
                   </p>
                 </th>
-                <th><p class="owncard-text">Rechts</p></th>
+                <th>
+                  <p class="owncard-text">
+                    <button type="submit" @click="putUpvote2">Click</button>
+                  </p>
+                </th>
               </tr>
               <td>{{ voting.votingsImage1 }} Votes</td>
               <td>{{ voting.votingsImage2 }} Votes</td>
@@ -69,6 +73,31 @@ export default {
         image2: image2f,
         votingsImage1: this.voting.votingsImage1 + 1,
         votingsImage2: this.voting.votingsImage2
+      })
+      const requstOptions = {
+        method: 'PUT',
+        headers: headers,
+        body: update,
+        redirect: 'follow'
+      }
+      fetch(endpoint, requstOptions)
+    },
+    putUpvote2 () {
+      console.log(this.voting.title)
+      const titlef = this.voting.title
+      const thisid = this.voting.id
+      const image1f = this.voting.image1
+      const image2f = this.voting.image2
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
+      const headers = new Headers()
+      headers.append('Content-Type', 'application/json')
+      const update = JSON.stringify({
+        voting: this.voting,
+        title: titlef,
+        image1: image1f,
+        image2: image2f,
+        votingsImage1: this.voting.votingsImage1,
+        votingsImage2: this.voting.votingsImage2 + 1
       })
       const requstOptions = {
         method: 'PUT',
