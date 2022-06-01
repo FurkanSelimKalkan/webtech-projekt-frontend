@@ -5,7 +5,7 @@
         <div class="owncard">
           <h5 class="owncard-title">{{ voting.title }}</h5>
           <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar2(voting)"
-                                                                                  class="image1" :alt=" voting.title">
+                                                                                  class="image2" :alt=" voting.title">
           <div class="owncard-body">
             <table class="tab">
               <tr>
@@ -123,6 +123,7 @@ export default {
 .gimmespace {
   position: relative;
   top: 10px;
+  z-index: 1;
 }
 
 .image1 {
