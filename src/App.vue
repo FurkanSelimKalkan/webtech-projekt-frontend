@@ -21,6 +21,10 @@ export default {
   color: #2c3e50;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 nav {
   padding: 30px;
 }
