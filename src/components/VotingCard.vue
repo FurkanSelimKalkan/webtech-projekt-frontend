@@ -135,6 +135,7 @@ export default {
 .image2 {
   position: relative;
   max-width: 50%;
+  z-index: 1;
 }
 
 .owncard {
