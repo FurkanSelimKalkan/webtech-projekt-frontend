@@ -20,7 +20,7 @@
                   </p>
                 </th>
               </tr>
-              <td><span>{{ votes1 }}</span></td>
+              <td><span>{{ votes1 }} Votes</span></td>
               <td>{{ votes2 }} Votes</td>
             </table>
 
