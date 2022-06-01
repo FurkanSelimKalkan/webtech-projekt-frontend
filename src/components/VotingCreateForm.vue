@@ -117,6 +117,7 @@ export default {
   border-radius: 300px;
 }
 .staysontop {
+  position: fixed;
   z-index:9999
 }
 </style>
