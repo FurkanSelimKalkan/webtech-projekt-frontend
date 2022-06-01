@@ -20,8 +20,8 @@
                   </p>
                 </th>
               </tr>
-              <td>{{ voting.votingsImage1 }} Votes</td>
-              <td>{{ voting.votingsImage2 }} Votes</td>
+              <td><span>{{ votes1 }}</span></td>
+              <td>{{ votes2 }} Votes</td>
             </table>
 
           </div>
@@ -39,6 +39,12 @@ export default {
     voting: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      votes1: this.voting.votingsImage1,
+      votes2: this.voting.votingsImage2
     }
   },
   methods: {
@@ -71,7 +77,7 @@ export default {
         title: titlef,
         image1: image1f,
         image2: image2f,
-        votingsImage1: this.voting.votingsImage1 + 1,
+        votingsImage1: this.votes1 + 1,
         votingsImage2: this.voting.votingsImage2
       })
       const requstOptions = {
@@ -81,6 +87,7 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requstOptions)
+      this.votes1 = this.votes1 + 1
     },
     putUpvote2 () {
       console.log(this.voting.title)
@@ -97,7 +104,7 @@ export default {
         image1: image1f,
         image2: image2f,
         votingsImage1: this.voting.votingsImage1,
-        votingsImage2: this.voting.votingsImage2 + 1
+        votingsImage2: this.votes2 + 1
       })
       const requstOptions = {
         method: 'PUT',
@@ -106,6 +113,7 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requstOptions)
+      this.votes2 = this.votes2 + 1
     }
   }
 }
