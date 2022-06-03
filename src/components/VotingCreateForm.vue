@@ -8,6 +8,10 @@
       <h5 id="offcanvas-label">New Voting</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+    <div>
+      <button @click="showUploadWidget()">Click</button>
+      <button @click="showUploadWidget2()">Click</button>
+    </div>
     <div class="offcanvas-body">
       <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
         <div class="mb-3">
@@ -58,6 +62,78 @@ export default {
     }
   },
   methods: {
+    showUploadWidget () {
+      window.cloudinary.openUploadWidget({
+        cloudName: 'dcima9c0k',
+        uploadPreset: 'ozih6v3l',
+        sources: ['local', 'image_search'],
+        googleApiKey: '<image_search_google_api_key>',
+        showAdvancedOptions: true,
+        cropping: true,
+        multiple: false,
+        defaultSource: 'local',
+        styles: {
+          palette: {
+            window: '#FFFFFF',
+            windowBorder: '#90A0B3',
+            tabIcon: '#0078FF',
+            menuIcons: '#5A616A',
+            textDark: '#000000',
+            textLight: '#FFFFFF',
+            link: '#0078FF',
+            action: '#FF620C',
+            inactiveTabIcon: '#0E2F5A',
+            error: '#F44235',
+            inProgress: '#0078FF',
+            complete: '#20B832',
+            sourceBg: '#E4EBF1'
+          },
+          fonts: { default: { active: true } }
+        }
+      }, (err, result) => {
+        if (!err && result && result.event === 'success') {
+          console.log('Upload Widget event - ', result.info)
+          const imagePath = result.info.path
+          this.image1 = 'https://res.cloudinary.com/dcima9c0k/image/upload/' + imagePath
+        }
+      })
+    },
+    showUploadWidget2 () {
+      window.cloudinary.openUploadWidget({
+        cloudName: 'dcima9c0k',
+        uploadPreset: 'ozih6v3l',
+        sources: ['local', 'image_search'],
+        googleApiKey: '<image_search_google_api_key>',
+        showAdvancedOptions: true,
+        cropping: true,
+        multiple: false,
+        defaultSource: 'local',
+        styles: {
+          palette: {
+            window: '#FFFFFF',
+            windowBorder: '#90A0B3',
+            tabIcon: '#0078FF',
+            menuIcons: '#5A616A',
+            textDark: '#000000',
+            textLight: '#FFFFFF',
+            link: '#0078FF',
+            action: '#FF620C',
+            inactiveTabIcon: '#0E2F5A',
+            error: '#F44235',
+            inProgress: '#0078FF',
+            complete: '#20B832',
+            sourceBg: '#E4EBF1'
+          },
+          fonts: { default: { active: true } }
+        }
+      }, (err, result) => {
+        if (!err && result && result.event === 'success') {
+          console.log('Upload Widget event - ', result.info)
+          const imagePath = result.info.path
+          this.image2 = 'https://res.cloudinary.com/dcima9c0k/image/upload/' + imagePath
+        }
+      })
+    },
     createVoting () {
       const valid = this.validate()
       if (valid) {
@@ -69,7 +145,8 @@ export default {
         const playload = JSON.stringify({
           title: this.title,
           image1: this.image1,
-          image2: this.image2
+          image2: this.image2,
+          ownerId: 1
         })
 
         var requestOptions = {

@@ -4,8 +4,12 @@
       <div class="own">
         <div class="owncard">
           <h5 class="owncard-title">{{ voting.title }}</h5>
-          <img :src="getAvatar(voting)" class="image1" :alt=" voting.title"> <img :src="getAvatar2(voting)"
-                                                                                  class="image2" :alt=" voting.title">
+          <div class="row">
+            <div class="column">
+              <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
+            <div class="column">
+              <img :src="voting.image2" class="image2" :alt=" voting.image2"></div>
+          </div>
           <div class="owncard-body">
             <table class="tab">
               <tr>
@@ -127,22 +131,33 @@ export default {
 }
 
 .image1 {
+  border-radius: 25px;
   position: relative;
   z-index: 1;
-  max-width: 50%;
+  max-width: 100%;
+  margin-left: 5px;
+  object-fit: contain
 }
 
 .image2 {
+  border-radius: 25px;
   position: relative;
-  max-width: 50%;
+  max-width: 100%;
+  margin-right: 5px;
   z-index: 1;
+  object-fit: contain
 }
 
 .owncard {
   display: inline-block;
   border: 2px solid lightgray;
+  border-radius: 10px;
   margin-top: 20px;
   white-space: nowrap;
+  background-color: #f3f3f3;
+  margin-bottom: 10px;
+  overflow: hidden;
+  max-width: 400px;
 }
 
 .owncard-title {
@@ -160,4 +175,15 @@ export default {
 .owncard-text {
   text-align: center;
 }
+.row {
+  display: flex;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 10px;
+}
+
 </style>
