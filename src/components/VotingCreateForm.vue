@@ -149,7 +149,7 @@ export default {
           ownerId: 1
         })
 
-        var requestOptions = {
+        const requestOptions = {
           method: 'POST',
           headers: headers,
           body: playload,
