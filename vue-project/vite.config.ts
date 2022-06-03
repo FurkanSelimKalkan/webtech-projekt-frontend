@@ -6,11 +6,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  test: {
-    deps: {
-      inline: ['element-plus']
-    },
-  },
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
