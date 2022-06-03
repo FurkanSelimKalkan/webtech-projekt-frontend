@@ -52,21 +52,6 @@ export default {
     }
   },
   methods: {
-    getAvatar (voting) {
-      if (voting.image1 === 'Outfit1.url') {
-        return require('../assets/outfit1.png')
-      } else if (voting.image1 === 'Outfit2.url') {
-        return require('../assets/outfit2.png')
-      }
-    },
-
-    getAvatar2 (voting) {
-      if (voting.image2 === 'Picture2.Url') {
-        return require('../assets/outfit2.png')
-      } else if (voting.image2 === 'Outfit1.url') {
-        return require('../assets/outfit1.png')
-      }
-    },
     putUpvote1 () {
       console.log(this.voting.title)
       const titlef = this.voting.title
