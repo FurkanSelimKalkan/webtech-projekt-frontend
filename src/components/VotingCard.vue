@@ -78,7 +78,7 @@ export default {
         image1: image1f,
         image2: image2f,
         votingsImage1: this.votes1 + 1,
-        votingsImage2: this.voting.votingsImage2
+        votingsImage2: this.votes2
       })
       const requstOptions = {
         method: 'PUT',
@@ -103,7 +103,7 @@ export default {
         title: titlef,
         image1: image1f,
         image2: image2f,
-        votingsImage1: this.voting.votingsImage1,
+        votingsImage1: this.votes1,
         votingsImage2: this.votes2 + 1
       })
       const requstOptions = {
