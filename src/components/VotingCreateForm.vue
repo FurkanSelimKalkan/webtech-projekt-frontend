@@ -68,8 +68,8 @@ export default {
         uploadPreset: 'ozih6v3l',
         sources: ['local', 'image_search'],
         googleApiKey: '<image_search_google_api_key>',
-        showAdvancedOptions: true,
-        cropping: true,
+        showAdvancedOptions: false,
+        cropping: false,
         multiple: false,
         defaultSource: 'local',
         styles: {
@@ -104,8 +104,8 @@ export default {
         uploadPreset: 'ozih6v3l',
         sources: ['local', 'image_search'],
         googleApiKey: '<image_search_google_api_key>',
-        showAdvancedOptions: true,
-        cropping: true,
+        showAdvancedOptions: false,
+        cropping: false,
         multiple: false,
         defaultSource: 'local',
         styles: {
