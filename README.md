@@ -1,4 +1,4 @@
-git init# webtech-projekt-frontend
+git init# webtech-projekt-frontend!
 
 ## Project setup
 ```
