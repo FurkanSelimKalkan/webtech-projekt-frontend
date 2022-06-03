@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var vitest_1 = require("vitest");
+var vitest_1 = require(@vitest);
 var test_utils_1 = require("@vue/test-utils");
 var HelloWorld_vue_1 = require("../HelloWorld.vue");
 vitest_1.describe('HelloWorld', function () {
