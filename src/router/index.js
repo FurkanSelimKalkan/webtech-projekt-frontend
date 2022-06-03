@@ -21,7 +21,7 @@ const routes = [
     component: Votings
   },
   {
-    path: '/voting',
+    path: '/votings/voting/1',
     name: 'Voting',
     component: Voting
   }
