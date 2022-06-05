@@ -3,7 +3,8 @@
     <div class="body">
       <div class="own">
         <div class="owncard">
-          <h5 class="owncard-title">{{ voting.title }}</h5>
+          <router-link class="titlelink" :to="`/votings/${voting.id}`"><h5
+            class="owncard-title">{{ voting.title }}</h5></router-link>
           <div class="row">
             <div class="column">
               <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
@@ -47,7 +48,8 @@ export default {
   data () {
     return {
       votes1: this.voting.votingsImage1,
-      votes2: this.voting.votingsImage2
+      votes2: this.voting.votingsImage2,
+      votingid: this.voting.id
     }
   },
   methods: {
@@ -159,6 +161,7 @@ export default {
 .owncard-text {
   text-align: center;
 }
+
 .row {
   display: flex;
   margin-right: 2px;

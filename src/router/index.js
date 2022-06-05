@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import About from '../views/AboutView.vue'
 import Votings from '../views/Votings'
-import Voting from '../views/Voting'
+import Voting from '../views/Voting.vue'
 
 const routes = [
   {
@@ -20,11 +20,13 @@ const routes = [
     name: 'Votings',
     component: Votings
   },
+  // dynamic segments start with a colon
   {
-    path: '/votings/voting/1',
+    path: '/votings/:id',
     name: 'Voting',
     component: Voting
   }
+
 ]
 
 const router = createRouter({
