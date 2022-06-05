@@ -1,5 +1,5 @@
 <template>
-  <voting-card :voting="this.voting"></voting-card>
+  <voting-card :voting="this.voting" :key="this.voting.id"></voting-card>
   <votings-create-form @created="addVoting"></votings-create-form>
 </template>
 

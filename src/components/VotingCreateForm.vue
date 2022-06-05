@@ -9,8 +9,8 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div>
-      <button @click="showUploadWidget()">Click</button>
-      <button @click="showUploadWidget2()">Click</button>
+      <button @click="showUploadWidget()">Upload Image1</button>
+      <button @click="showUploadWidget2()">Upload Image2</button>
     </div>
     <div class="offcanvas-body">
       <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
