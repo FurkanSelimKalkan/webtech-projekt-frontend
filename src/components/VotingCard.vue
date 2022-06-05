@@ -28,7 +28,8 @@
               <td><span>{{ votes1 }} Votes</span></td>
               <td>{{ votes2 }} Votes</td>
             </table>
-            <button type="submit" @click="delete1">{{ deletebutton }}</button>
+            <button id ="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
+           <p> </p>
 
           </div>
         </div>
