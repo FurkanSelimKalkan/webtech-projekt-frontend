@@ -28,6 +28,7 @@
               <td><span>{{ votes1 }} Votes</span></td>
               <td>{{ votes2 }} Votes</td>
             </table>
+            <button type="submit" @click="delete1">{{ deletebutton }}</button>
 
           </div>
         </div>
@@ -49,7 +50,8 @@ export default {
     return {
       votes1: this.voting.votingsImage1,
       votes2: this.voting.votingsImage2,
-      votingid: this.voting.id
+      votingid: this.voting.id,
+      deletebutton: 'Delete'
     }
   },
   methods: {
@@ -104,6 +106,16 @@ export default {
       }
       fetch(endpoint, requstOptions)
       this.votes2 = this.votes2 + 1
+    },
+    delete1 () {
+      const thisid = this.voting.id
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
+      const requstOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requstOptions).catch(error => console.lof('error', error))
+      this.deletebutton = 'Successfully deleted'
     }
   }
 }
