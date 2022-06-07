@@ -10,8 +10,8 @@ const oktaSignIn = new OktaSignIn({
     issuer: 'https://dev-84068864.okta.com/oauth2/default',
     display: 'page',
     scopes: ['openid', 'profile', 'email']
-  }
-  // features: { registration: true }
+  },
+  features: { registration: true }
 })
 
 const oktaAuth = new OktaAuth({
