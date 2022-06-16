@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import About from '../views/AboutView.vue'
 import Votings from '../views/Votings'
 import Voting from '../views/Voting.vue'
+import Profile from '@/views/Profile'
+import { authGuard } from '@auth0/auth0-vue'
 
 const routes = [
   {
@@ -25,6 +27,12 @@ const routes = [
     path: '/votings/:id',
     name: 'Voting',
     component: Voting
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    beforeEnter: authGuard
   }
 
 ]
