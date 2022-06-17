@@ -115,7 +115,7 @@ export default {
         method: 'DELETE',
         redirect: 'follow'
       }
-      fetch(endpoint, requstOptions).catch(error => console.lof('error', error))
+      fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
     }
   }

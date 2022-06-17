@@ -70,7 +70,9 @@ export default {
     return {
       title: '',
       image1: '',
-      image2: ''
+      image2: '',
+      text: String,
+      colot: String
     }
   },
   setup () {
@@ -219,4 +221,5 @@ export default {
   border-radius: 300px;
   z-index: 9999;
 }
+
 </style>
