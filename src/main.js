@@ -3,18 +3,13 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
-import { oktaAuth } from './okta'
-import OktaVue from '@okta/okta-vue'
 
-createApp(App)
-  .use(router)
-  .use(OktaVue, {
-    oktaAuth,
-    onAuthRequired: () => {
-      router.push('/login')
-    },
-    onAuthResume: () => {
-      router.push('/login')
-    }
-  })
-  .mount('#app')
+import { createAuth0 } from '@auth0/auth0-vue'
+import { domain, clientId } from '../auth_config.json'
+
+createApp(App).use(router).use(
+  createAuth0({
+    domain: domain,
+    client_id: clientId,
+    redirect_uri: window.location.origin
+  })).mount('#app')

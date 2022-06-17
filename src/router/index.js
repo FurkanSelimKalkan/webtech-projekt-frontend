@@ -3,10 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import About from '../views/AboutView.vue'
 import Votings from '../views/Votings'
 import Voting from '../views/Voting.vue'
-
-import { LoginCallback, navigationGuard } from '@okta/okta-vue'
-import LoginComponent from '@/views/Login.vue'
-import ProfileComponent from '@/views/Profile.vue'
+import Profile from '@/views/Profile'
+import { authGuard } from '@auth0/auth0-vue'
 
 const routes = [
   {
@@ -31,19 +29,10 @@ const routes = [
     component: Voting
   },
   {
-    path: '/login',
-    component: LoginComponent
-  },
-  {
-    path: '/login/callback',
-    component: LoginCallback
-  },
-  {
     path: '/profile',
-    component: ProfileComponent,
-    meta: {
-      requiresAuth: true
-    }
+    name: 'Profile',
+    component: Profile,
+    beforeEnter: authGuard
   }
 
 ]
@@ -53,7 +42,5 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes
 })
-
-router.beforeEach(navigationGuard)
 
 export default router

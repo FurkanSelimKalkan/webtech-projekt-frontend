@@ -1,36 +1,35 @@
 <template>
-  <div id="profile">
-    <h1>My User Profile (ID Token Claims)</h1>
-    <p>
-      Below is the information from your ID token.
-    </p>
-    <table>
-      <thead>
-      <tr>
-        <th>Claim</th>
-        <th>Value</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(claim, index) in claims" :key="index">
-        <td>{{claim.claim}}</td>
-        <td :id="'claim-' + claim.claim">{{claim.value}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div> test</div>
+  <div v-if="isLoading">Loading ...</div>
+  <div v-else>
+    <h2>User Profile</h2>
+    <pre v-if="isAuthenticated">
+        <code>{{ user }}</code>
+           <h2>{{user.sub}}</h2>
+      <LogoutButton></LogoutButton>
+      </pre>
+    <div v-else>  <button @click="login">Log in</button></div>
   </div>
 </template>
-
 <script>
+// Composition API
+import { useAuth0 } from '@auth0/auth0-vue'
+import LogoutButton from '@/components/LogoutButton'
+
 export default {
-  name: 'Profile',
-  data () {
+  setup () {
+    const auth0 = useAuth0()
+
     return {
-      claims: []
+      login: () => auth0.loginWithRedirect(),
+      user: auth0.user,
+      isAuthenticated: auth0.isAuthenticated,
+      isLoading: auth0.isLoading
     }
   },
-  async created () {
-    this.claims = await Object.entries(await this.$auth.getUser()).map(entry => ({ claim: entry[0], value: entry[1] }))
+  components: {
+    LogoutButton
   }
 }
+
 </script>

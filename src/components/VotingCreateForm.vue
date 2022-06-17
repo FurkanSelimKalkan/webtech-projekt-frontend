@@ -4,6 +4,7 @@
     <i class="bi bi-voting-plus-fill">Voting erstellen</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
+       <pre v-if="isAuthenticated">
     <div class="offcanvas-header">
       <h5 id="offcanvas-label">New Voting</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -48,12 +49,23 @@
         </div>
       </form>
     </div>
+      </pre>
+    <div v-else>
+      <h1>Bitte erst einloggen!</h1>
+      <LoginButton></LoginButton>
+    </div>
   </div>
 </template>
 
 <script>
+import { useAuth0 } from '@auth0/auth0-vue'
+import LoginButton from '@/components/LoginButton'
+
 export default {
   name: 'VotingCreateForm',
+  components: {
+    LoginButton
+  },
   data () {
     return {
       title: '',
@@ -61,6 +73,16 @@ export default {
       image2: '',
       text: String,
       colot: String
+    }
+  },
+  setup () {
+    const auth0 = useAuth0()
+
+    return {
+      login: () => auth0.loginWithRedirect(),
+      user: auth0.user,
+      isAuthenticated: auth0.isAuthenticated,
+      isLoading: auth0.isLoading
     }
   },
   methods: {
@@ -148,7 +170,7 @@ export default {
           title: this.title,
           image1: this.image1,
           image2: this.image2,
-          ownerId: 1
+          ownerId: this.user.sub
         })
 
         const requestOptions = {
