@@ -121,8 +121,7 @@ export default {
           this.image1 = 'https://res.cloudinary.com/dcima9c0k/image/upload/' + imagePath
         }
       })
-    }
-    ,
+    },
     showUploadWidget2 () {
       window.cloudinary.openUploadWidget({
         cloudName: 'dcima9c0k',
@@ -158,8 +157,7 @@ export default {
           this.image2 = 'https://res.cloudinary.com/dcima9c0k/image/upload/' + imagePath
         }
       })
-    }
-    ,
+    },
     createVoting () {
       const valid = this.validate()
       if (valid) {
@@ -185,8 +183,7 @@ export default {
         fetch(endpoint, requestOptions)
           .catch(error => console.log('error', error))
       }
-    }
-    ,
+    },
     validate () {
       let valid = true
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
