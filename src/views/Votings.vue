@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <votings-card-list :votings="this.votings"></votings-card-list>
   </div>
-  <votings-create-form @created="addVoting"></votings-create-form>
+  <votings-create-form @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-create-form>
 </template>
 
 <script>
@@ -12,6 +12,7 @@ import VotingsCreateForm from '@/components/VotingCreateForm'
 
 export default {
   name: 'Votings',
+  props: ['auth', 'authenticated', 'admin'],
   components: {
     VotingsCardList,
     VotingsCreateForm

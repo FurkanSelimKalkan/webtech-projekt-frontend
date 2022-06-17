@@ -5,6 +5,7 @@ import Votings from '../views/Votings'
 import Voting from '../views/Voting.vue'
 import Profile from '@/views/Profile'
 import { authGuard } from '@auth0/auth0-vue'
+import Login from '@/views/Login'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     name: 'Profile',
     component: Profile,
     beforeEnter: authGuard
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 
 ]

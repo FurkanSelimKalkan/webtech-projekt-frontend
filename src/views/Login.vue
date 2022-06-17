@@ -1,27 +1,36 @@
 <template>
-  <div class="login">
-    <div id="okta-signin-container"></div>
-  </div>
+  <div id="hiw-login-container"></div>
+  <h4 v-if="!authenticated">
+    You are not logged in! Please <a @click="auth.login();">Log In</a> to
+    continue.
+  </h4>
+  <button
+    class="btn btn-primary btn-margin"
+    id="qsLoginBtn"
+    v-if="!authenticated"
+    @click="login"
+  >
+    Log In
+  </button>
 </template>
 
 <script>
-import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css'
-import { oktaSignIn } from '@/okta'
+import auth from '@/auth/AuthService'
+
 export default {
   name: 'Login',
-  mounted: function () {
-    this.$nextTick(function () {
-      oktaSignIn.showSignInAndRedirect(
-        { el: '#okta-signin-container' }
-      )
-    })
-  },
-  unmounted () {
-    // Remove the widget from the DOM on path change
-    oktaSignIn.remove()
+  props: ['auth', 'authenticated', 'admin'],
+  methods: {
+    login () {
+      auth.login()
+    },
+    logout () {
+      auth.logout()
+    }
   }
 }
 </script>
 
 <style scoped>
+
 </style>

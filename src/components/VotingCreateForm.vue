@@ -4,68 +4,74 @@
     <i class="bi bi-voting-plus-fill">Voting erstellen</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
-       <pre v-if="isAuthenticated">
-    <div class="offcanvas-header">
-      <h5 id="offcanvas-label">New Voting</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div>
-      <button @click="showUploadWidget()">Upload Image1</button>
-      <button @click="showUploadWidget2()">Upload Image2</button>
-    </div>
-    <div class="offcanvas-body">
-      <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type=text class="form-control" id=title v-model=title required>
-          <div class="invalid-feedback">
-            Please provide the title.
+    <div v-if="authenticated">
+      <div class="offcanvas-header">
+        <h5 id="offcanvas-label">New Voting</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div>
+        <button @click="showUploadWidget()">Upload Image1</button>
+        <button @click="showUploadWidget2()">Upload Image2</button>
+      </div>
+      <div class="offcanvas-body">
+        <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type=text class="form-control" id=title v-model=title required>
+            <div class="invalid-feedback">
+              Please provide the title.
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="image1" class="form-label">Image1</label>
-          <input type=text class="form-control" id=image1 v-model=image1 required>
-          <div class="invalid-feedback">
-            Please provide a image URL.
+          <div class="mb-3">
+            <label for="image1" class="form-label">Image1</label>
+            <input type=text class="form-control" id=image1 v-model=image1 required>
+            <div class="invalid-feedback">
+              Please provide a image URL.
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for=image2 class="form-label">Image2</label>
-          <input type=text class="form-control" id=image2 v-model=image2 required>
-          <div class="invalid-feedback">
-            Please provide a image URL.
+          <div class="mb-3">
+            <label for=image2 class="form-label">Image2</label>
+            <input type=text class="form-control" id=image2 v-model=image2 required>
+            <div class="invalid-feedback">
+              Please provide a image URL.
+            </div>
           </div>
-        </div>
-        <div v-if="this.serverValidationMessages">
-          <ul>
-            <li v-for="(message, index) in serverValidationMessages" :key="index" style="color: red">
-              {{ message }}
-            </li>
-          </ul>
-        </div>
-        <div class="mt-5">
-          <button class="btn btn-primary me-3" type="submit" @click="createVoting()">Create</button>
-          <button class="btn btn-danger" type="reset">Reset</button>
-        </div>
-      </form>
+          <div v-if="this.serverValidationMessages">
+            <ul>
+              <li v-for="(message, index) in serverValidationMessages" :key="index" style="color: red">
+                {{ message }}
+              </li>
+            </ul>
+          </div>
+          <div class="mt-5">
+            <button class="btn btn-primary me-3" type="submit" @click="createVoting()">Create</button>
+            <button class="btn btn-danger" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
     </div>
-      </pre>
-    <div v-else>
+    <div v-if="!authenticated">
       <h1>Bitte erst einloggen!</h1>
-      <LoginButton></LoginButton>
+      <div id="hiw-login-container"></div>
+      <button
+        class="btn btn-primary btn-margin"
+        id="qsLoginBtn"
+        v-if="!authenticated"
+        @click="login"
+      >
+        Log In O_O
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import { useAuth0 } from '@auth0/auth0-vue'
-import LoginButton from '@/components/LoginButton'
+
+import auth from '@/auth/AuthService'
 
 export default {
   name: 'VotingCreateForm',
-  components: {
-    LoginButton
-  },
+  props: ['auth', 'authenticated', 'admin'],
   data () {
     return {
       title: '',
@@ -75,17 +81,13 @@ export default {
       colot: String
     }
   },
-  setup () {
-    const auth0 = useAuth0()
-
-    return {
-      login: () => auth0.loginWithRedirect(),
-      user: auth0.user,
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading
-    }
-  },
   methods: {
+    login () {
+      auth.login()
+    },
+    logout () {
+      auth.logout()
+    },
     showUploadWidget () {
       window.cloudinary.openUploadWidget({
         cloudName: 'dcima9c0k',

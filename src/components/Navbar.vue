@@ -10,9 +10,8 @@
         <router-link class="nav-link" to="/">Home</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
-        <pre class ="navbar-nav collapse navbar-collapse " v-if="isAuthenticated">
-        <router-link class="nav-link" to="/profile">Profile</router-link>
-        </pre>
+        <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
+        <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a>
       </ul>
     </div>
   </nav>
@@ -20,21 +19,10 @@
 </template>
 
 <script>
-import { useAuth0 } from '@auth0/auth0-vue'
 
 export default {
   name: 'Navbar',
-  setup () {
-    const auth0 = useAuth0()
-
-    return {
-      login: () => auth0.loginWithRedirect(),
-      user: auth0.user,
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading
-    }
-  }
-
+  props: ['auth', 'authenticated', 'admin']
 }
 
 </script>

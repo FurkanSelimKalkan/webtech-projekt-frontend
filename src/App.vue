@@ -1,14 +1,39 @@
 <template>
-  <navbar></navbar>
-  <router-view/>
+  <navbar :auth="this.auth" :authenticated ="this.authenticated"></navbar>
+  <div class="container">
+    <router-view :auth="auth" :authenticated="authenticated">
+    </router-view>
+  </div>
 </template>
 
 <script>
+import auth from './auth/AuthService'
 import Navbar from '@/components/Navbar'
 
 export default {
   name: 'App',
-  components: { Navbar }
+  components: { Navbar },
+  data () {
+    return {
+      auth,
+      authenticated: auth.authenticated
+    }
+  },
+  methods: {
+    login () {
+      auth.login()
+    },
+    logout () {
+      auth.logout()
+    }
+  },
+  created () {
+    auth.authNotifier.on('authChange', authState => {
+      this.authenticated = authState.authenticated
+      this.admin = authState.admin
+    })
+    auth.renewSession()
+  }
 }
 </script>
 
