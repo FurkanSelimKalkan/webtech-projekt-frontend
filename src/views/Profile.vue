@@ -1,34 +1,29 @@
 <template>
   <div> test</div>
-  <div v-if="isLoading">Loading ...</div>
-  <div v-else>
     <h2>User Profile</h2>
-    <pre v-if="isAuthenticated">
-        <code>{{ user }}</code>
-           <h2>{{user.sub}}</h2>
-      <LogoutButton></LogoutButton>
-      </pre>
-    <div v-else>  <button @click="login">Log in</button></div>
-  </div>
+        <code>{{ profile }}</code>
+           <h2>{{ profile.sub }}</h2>
+
 </template>
 <script>
 // Composition API
-import { useAuth0 } from '@auth0/auth0-vue'
-import LogoutButton from '@/components/LogoutButton'
 
 export default {
-  setup () {
-    const auth0 = useAuth0()
-
+  props: ['auth'],
+  data () {
     return {
-      login: () => auth0.loginWithRedirect(),
-      user: auth0.user,
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading
+      profile: {}
     }
   },
-  components: {
-    LogoutButton
+  created () {
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile
+    } else {
+      this.auth.getProfile((err, profile) => {
+        if (err) return console.log(err)
+        this.profile = profile
+      })
+    }
   }
 }
 

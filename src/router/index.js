@@ -4,7 +4,7 @@ import About from '../views/AboutView.vue'
 import Votings from '../views/Votings'
 import Voting from '../views/Voting.vue'
 import Profile from '@/views/Profile'
-import { authGuard } from '@auth0/auth0-vue'
+import auth from './../auth/AuthService'
 import Login from '@/views/Login'
 
 const routes = [
@@ -33,7 +33,13 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
-    beforeEnter: authGuard
+    beforeEnter: (to, from, next) => {
+      if (!auth.isAuthenticated()) {
+        next(false)
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/login',
