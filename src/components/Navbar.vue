@@ -11,8 +11,14 @@
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
         <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
-        <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated" >Login</a>
+        <!--   <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a> -->
       </ul>
+    </div>
+    <div class="login" v-if="!authenticated">
+      <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a>
+    </div>
+    <div class="logout" v-if="authenticated">
+      <LogoutButton></LogoutButton>
     </div>
   </nav>
 
@@ -20,14 +26,33 @@
 
 <script>
 
+import auth from '@/auth/AuthService'
+import LogoutButton from '@/components/LogoutButton'
+
 export default {
   name: 'Navbar',
   props: ['auth', 'authenticated', 'admin'],
+  components: {
+    LogoutButton
+  },
   methods: {
+    login () {
+      auth.login()
+    },
+    logout () {
+      auth.logout()
+    }
   }
 }
 
 </script>
 
 <style scoped>
+.logout {
+  margin-right: 0%;
+}
+
+.login {
+  margin-right: 0%;
+}
 </style>
