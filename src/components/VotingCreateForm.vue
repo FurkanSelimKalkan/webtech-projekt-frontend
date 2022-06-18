@@ -78,7 +78,18 @@ export default {
       image1: '',
       image2: '',
       text: String,
-      colot: String
+      colot: String,
+      profile: {}
+    }
+  },
+  created () {
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile
+    } else {
+      this.auth.getProfile((err, profile) => {
+        if (err) return console.log(err)
+        this.profile = profile
+      })
     }
   },
   methods: {
@@ -172,7 +183,7 @@ export default {
           title: this.title,
           image1: this.image1,
           image2: this.image2,
-          ownerId: this.user.sub
+          ownerId: this.profile.sub
         })
 
         const requestOptions = {
