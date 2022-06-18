@@ -1,5 +1,4 @@
 <template>
-  <div> test</div>
     <h2>User Profile</h2>
         <code>{{ profile }}</code>
            <h2>{{ profile.sub }}</h2>

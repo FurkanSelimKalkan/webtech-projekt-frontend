@@ -5,6 +5,7 @@
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`"><h5
             class="owncard-title">{{ voting.title }}</h5></router-link>
+          von {{voting.userName}}
           <div class="row">
             <div class="column">
               <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
@@ -26,7 +27,7 @@
                 </th>
               </tr>
               <td><span>{{ votes1 }} Votes</span></td>
-              <td>{{ votes2 }} Votes {{ voting.user }} </td>
+              <td>{{ votes2 }} Votes</td>
             </table>
             <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             <p></p>
@@ -52,7 +53,8 @@ export default {
       votes1: this.voting.votingsImage1,
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
-      deletebutton: 'Delete'
+      deletebutton: 'Delete',
+      user: {}
     }
   },
   methods: {

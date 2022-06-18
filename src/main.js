@@ -11,5 +11,6 @@ createApp(App).use(router).use(
   createAuth0({
     domain: domain,
     client_id: clientId,
-    redirect_uri: window.location.origin
+    redirect_uri: window.location.origin,
+    audience: 'test'
   })).mount('#app')
