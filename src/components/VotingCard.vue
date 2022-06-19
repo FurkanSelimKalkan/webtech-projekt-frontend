@@ -89,7 +89,8 @@ export default {
       headers.append('Content-Type', 'application/json')
       const update = JSON.stringify({
         userId: this.profile.sub,
-        votingsImage1: this.votes1 + 1
+        votingsImage1: this.votes1 + 1,
+        votingsImage2: this.votes2
       })
       const requstOptions = {
         method: 'PUT',
@@ -108,6 +109,7 @@ export default {
       headers.append('Content-Type', 'application/json')
       const update = JSON.stringify({
         userId: this.profile.sub,
+        votingsImage1: this.votes2,
         votingsImage2: this.votes2 + 1
       })
       const requstOptions = {
