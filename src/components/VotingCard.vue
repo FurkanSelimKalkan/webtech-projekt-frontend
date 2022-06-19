@@ -1,7 +1,7 @@
 <template>
   <div class="gimmespace">
     <div class="body">
-      <div v-if="authenticated">Hallo, {{ profile.sub }} !!</div>
+      <div v-if="authenticated">User who Owns this: {{ profile.sub }}  .........Users who Voted this: {{usersVoted}} !!</div>
       <div class="own">
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`">
@@ -53,6 +53,7 @@ export default {
       votes1: this.voting.votingsImage1,
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
+      usersVoted: this.voting.votedUsers,
       deletebutton: 'Delete',
       profile: {},
       user: {}
@@ -72,44 +73,48 @@ export default {
   },
   methods: {
     putUpvote1 () {
-      console.log(this.voting.title)
-      const thisid = this.voting.id
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
-      const update = JSON.stringify({
-        votingsImage1: this.votes1 + 1,
-        votingsImage2: this.votes2,
-        votingUser: this.profile.sub
-      })
-      const requstOptions = {
-        method: 'PUT',
-        headers: headers,
-        body: update,
-        redirect: 'follow'
+      if (this.usersVoted.includes(this.profile.sub) === false) {
+        const thisid = this.voting.id
+        const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+        const update = JSON.stringify({
+          votingsImage1: this.votes1 + 1,
+          votingsImage2: this.votes2,
+          votingUser: this.profile.sub
+        })
+        const requstOptions = {
+          method: 'PUT',
+          headers: headers,
+          body: update,
+          redirect: 'follow'
+        }
+        fetch(endpoint, requstOptions)
+        this.votes1 = this.votes1 + 1
+        this.usersVoted = this.usersVoted.add(this.profile.sub)
       }
-      fetch(endpoint, requstOptions)
-      this.votes1 = this.votes1 + 1
     },
     putUpvote2 () {
-      console.log(this.voting.title)
-      const thisid = this.voting.id
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
-      const update = JSON.stringify({
-        votingsImage1: this.votes1,
-        votingsImage2: this.votes2 + 1,
-        votingUser: this.profile.sub
-      })
-      const requstOptions = {
-        method: 'PUT',
-        headers: headers,
-        body: update,
-        redirect: 'follow'
+      if (this.usersVoted.includes(this.profile.sub) === false) {
+        const thisid = this.voting.id
+        const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+        const update = JSON.stringify({
+          votingsImage1: this.votes1,
+          votingsImage2: this.votes2 + 1,
+          votingUser: this.profile.sub
+        })
+        const requstOptions = {
+          method: 'PUT',
+          headers: headers,
+          body: update,
+          redirect: 'follow'
+        }
+        fetch(endpoint, requstOptions)
+        this.votes2 = this.votes2 + 1
+        this.usersVoted = this.usersVoted.add(this.profile.sub)
       }
-      fetch(endpoint, requstOptions)
-      this.votes2 = this.votes2 + 1
     },
     delete1 () {
       const thisid = this.voting.id
