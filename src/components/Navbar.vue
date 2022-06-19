@@ -12,10 +12,10 @@
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
         <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
-        <img alt="Website Art" class="title" src="../assets/thisthat2.png" height="50">
         <!--   <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a> -->
       </ul>
     </div>
+    <div class = "logo"> <img alt="Website Art" src="../assets/thisthat2.png" height="50"></div>
     <div class="login" v-if="!authenticated">
       <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a>
     </div>
@@ -60,5 +60,8 @@ export default {
 .title {
   display: block;
   margin-left: 120%;
+}
+.logo {
+  margin: 0 auto;
 }
 </style>
