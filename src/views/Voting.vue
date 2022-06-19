@@ -1,6 +1,6 @@
 <template>
-  <voting-card :voting="this.voting" :key="this.voting.id"></voting-card>
-  <votings-create-form @created="addVoting"></votings-create-form>
+  <voting-card :voting="this.voting" :key="this.voting.id" :auth ="this.auth" :authenticated = "this.authenticated"></voting-card>
+  <votings-create-form @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-create-form>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ import VotingsCreateForm from '@/components/VotingCreateForm'
 
 export default {
   name: 'Voting',
-  props: ['auth', 'voting', 'authenticated'],
+  props: ['auth', 'authenticated', 'admin'],
   components: {
     VotingCard,
     VotingsCreateForm
