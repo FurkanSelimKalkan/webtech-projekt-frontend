@@ -34,8 +34,16 @@
                   <hr class="mt-0 mb-4">
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
-                      <h6>Erstellte Votings</h6>
+                      <h6>Erstellte Voting Umfragen</h6>
                       <p class="text-muted">{{ this.numberofvotings }}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6>Erhaltene Voting Stimmen</h6>
+                      <p class="text-muted">Idee</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6>Verteilte Voting Stimmen</h6>
+                      <p class="text-muted">Idee</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Most Viewed</h6>
