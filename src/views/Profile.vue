@@ -1,4 +1,6 @@
 <template>
+  {{profile}}
+  {{profile.sub}}
   <h1>User Profile</h1>
   <section style="background-color: white;">
     <div class="container py-5 h-100">

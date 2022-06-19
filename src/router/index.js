@@ -28,7 +28,7 @@ const routes = [
   {
     path: '/votings/:id',
     name: 'Voting',
-    component: Voting
+    component: Voting,
   },
   {
     path: '/login',

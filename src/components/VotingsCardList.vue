@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="col" v-for="voting in votings" :key="voting.id">
-      <voting-card :voting="voting"></voting-card>
+      <voting-card :voting="voting" :auth ="this.auth" :authenticated = "this.authenticated"></voting-card>
     </div>
   </div>
 </template>
@@ -14,12 +14,7 @@ export default {
   components: {
     VotingCard
   },
-  props: {
-    votings: {
-      type: Array,
-      required: true
-    }
-  }
+  props: ['auth', 'votings', 'authenticated']
 }
 </script>
 

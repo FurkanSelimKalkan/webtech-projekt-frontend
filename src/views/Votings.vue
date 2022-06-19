@@ -1,7 +1,7 @@
 <template>
   <h1>Votings</h1>
   <div class="container-fluid">
-    <votings-card-list :votings="this.votings"></votings-card-list>
+    <votings-card-list :votings="this.votings" @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-card-list>
   </div>
   <votings-create-form @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-create-form>
 </template>

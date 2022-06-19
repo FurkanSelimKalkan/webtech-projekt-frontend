@@ -1,11 +1,14 @@
 <template>
   <div class="gimmespace">
     <div class="body">
+      <div v-if="authenticated">Hallo, {{ profile.sub }} !!</div>
       <div class="own">
         <div class="owncard">
-          <router-link class="titlelink" :to="`/votings/${voting.id}`"><h5
-            class="owncard-title">{{ voting.title }}</h5></router-link>
-          von {{voting.userName}}
+          <router-link class="titlelink" :to="`/votings/${voting.id}`">
+            <h5
+              class="owncard-title">{{ voting.title }} </h5>
+          </router-link>
+          von {{ voting.userName }}
           <div class="row">
             <div class="column">
               <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
@@ -13,6 +16,7 @@
               <img :src="voting.image2" class="image2" :alt=" voting.image2"></div>
           </div>
           <div class="owncard-body">
+            <div v-if = "authenticated">
             <table class="tab">
               <tr>
                 <th>
@@ -29,6 +33,7 @@
               <td><span>{{ votes1 }} Votes</span></td>
               <td>{{ votes2 }} Votes</td>
             </table>
+            </div>
             <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             <p></p>
 
@@ -42,22 +47,40 @@
 
 export default {
   name: 'VotingCard',
-  props: {
-    voting: {
-      type: Object,
-      required: true
-    }
-  },
+  props: ['auth', 'voting', 'authenticated'],
   data () {
     return {
       votes1: this.voting.votingsImage1,
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
       deletebutton: 'Delete',
+      profile: {},
       user: {}
     }
   },
+  created () {
+    if (this.authenticated) {
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile
+      } else {
+        this.auth.getProfile((err, profile) => {
+          if (err) return console.log(err)
+          this.profile = profile
+        })
+      }
+    }
+  },
   methods: {
+    getProfile () {
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile
+      } else {
+        this.auth.getProfile((err, profile) => {
+          if (err) return console.log(err)
+          this.profile = profile
+        })
+      }
+    },
     putUpvote1 () {
       console.log(this.voting.title)
       const titlef = this.voting.title

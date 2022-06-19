@@ -9,6 +9,7 @@ import VotingsCreateForm from '@/components/VotingCreateForm'
 
 export default {
   name: 'Voting',
+  props: ['auth', 'voting', 'authenticated'],
   components: {
     VotingCard,
     VotingsCreateForm
