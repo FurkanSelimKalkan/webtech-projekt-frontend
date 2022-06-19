@@ -33,7 +33,7 @@ import LogoutButton from '@/components/LogoutButton'
 
 export default {
   name: 'Navbar',
-  props: ['auth', 'authenticated', 'admin'],
+  props: ['auth', 'authenticated'],
   components: {
     LogoutButton
   },

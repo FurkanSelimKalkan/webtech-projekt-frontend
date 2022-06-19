@@ -12,7 +12,7 @@ import VotingsCreateForm from '@/components/VotingCreateForm'
 
 export default {
   name: 'Votings',
-  props: ['auth', 'authenticated', 'admin'],
+  props: ['auth', 'authenticated'],
   components: {
     VotingsCardList,
     VotingsCreateForm

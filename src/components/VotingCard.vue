@@ -83,20 +83,12 @@ export default {
     },
     putUpvote1 () {
       console.log(this.voting.title)
-      const titlef = this.voting.title
       const thisid = this.voting.id
-      const image1f = this.voting.image1
-      const image2f = this.voting.image2
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
       const headers = new Headers()
       headers.append('Content-Type', 'application/json')
       const update = JSON.stringify({
-        voting: this.voting,
-        title: titlef,
-        image1: image1f,
-        image2: image2f,
-        votingsImage1: this.votes1 + 1,
-        votingsImage2: this.votes2
+        userId: this.profile.sub
       })
       const requstOptions = {
         method: 'PUT',
