@@ -6,6 +6,7 @@ import Voting from '../views/Voting.vue'
 import Profile from '@/views/Profile'
 import auth from './../auth/AuthService'
 import Login from '@/views/Login'
+import Guide from '@/views/Guide'
 
 const routes = [
   {
@@ -30,6 +31,16 @@ const routes = [
     component: Voting
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/guide',
+    name: 'Guide',
+    component: Guide
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: Profile,
@@ -40,11 +51,6 @@ const routes = [
         next()
       }
     }
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
   }
 
 ]
