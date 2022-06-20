@@ -34,6 +34,24 @@
               <td>{{ votes2 }} Votes</td>
             </table>
             </div>
+            <div v-else >
+              <table class="tab">
+                <tr>
+                  <th>
+                    <p class="owncard-text">
+                      <button type="submit" @click="login">Click</button>
+                    </p>
+                  </th>
+                  <th>
+                    <p class="owncard-text">
+                      <button type="submit" @click="login">Click</button>
+                    </p>
+                  </th>
+                </tr>
+                <td><span>{{ votes1 }} Votes</span></td>
+                <td>{{ votes2 }} Votes</td>
+              </table>
+            </div>
             <button v-if="this.votingOwner === this.profile.sub" id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             <p></p>
 
@@ -44,6 +62,8 @@
   </div>
 </template>
 <script>
+
+import router from '@/router'
 
 export default {
   name: 'VotingCard',
@@ -126,6 +146,9 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
+    },
+    login () {
+      router.push({ path: 'login' })
     }
   }
 }
