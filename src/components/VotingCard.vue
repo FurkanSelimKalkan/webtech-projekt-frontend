@@ -53,6 +53,7 @@
               </table>
             </div>
             <button v-if="authenticated && this.votingOwner === this.profile.sub" id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
+            <div v-else>kein button</div>
             <p></p>
           </div>
         </div>
