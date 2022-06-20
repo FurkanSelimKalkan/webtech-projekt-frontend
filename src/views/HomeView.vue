@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="App logo" src="../assets/logo.png">
-    <HelloWorld msg="Hello World!"/>
+    <HelloWorld msg="Get started and discover our App!"/>
     <div v-if="authenticated">
       <LogoutButton></LogoutButton>
     </div>

@@ -111,7 +111,7 @@ class AuthService {
     localStorage.removeItem('loggedIn')
 
     // navigate to the home route
-    router.replace(process.env.VUE_APP_FRONTEND_BASE_URL + '/')
+    router.replace('/')
   }
 
   isAuthenticated () {
