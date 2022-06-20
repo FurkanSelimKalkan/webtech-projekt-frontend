@@ -1,5 +1,5 @@
 <template>
-<div></div>
+<h1>This is an guide page</h1>
 </template>
 
 <script>
