@@ -54,7 +54,6 @@
             </div>
             <button v-if="this.votingOwner === this.profile.sub" id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             <p></p>
-
           </div>
         </div>
       </div>
