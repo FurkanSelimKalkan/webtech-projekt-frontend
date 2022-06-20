@@ -1,7 +1,7 @@
 <template>
   <div class="gimmespace">
     <div class="body">
-      <div v-if="authenticated">User who Owns this: {{ profile.sub }}  .........Users who Voted this: {{usersVoted}} !!</div>
+      <div v-if="authenticated">User who Owns this: {{ this.votingOwner }}  .........Users who Voted this: {{usersVoted}} !!</div>
       <div class="own">
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`">
@@ -34,7 +34,7 @@
               <td>{{ votes2 }} Votes</td>
             </table>
             </div>
-            <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
+            <button v-if="this.votingOwner === this.profile.sub" id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             <p></p>
 
           </div>
@@ -54,6 +54,7 @@ export default {
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
+      votingOwner: this.voting.ownerId,
       deletebutton: 'Delete',
       profile: {},
       user: {}
