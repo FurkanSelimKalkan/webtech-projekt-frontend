@@ -49,6 +49,7 @@ class AuthService {
       this.expiresAt = expiresAt
 
       localStorage.setItem('loggedIn', true)
+      localStorage.setItem('expires_at', expiresAt)
 
       this.authNotifier.emit('authChange', {
         authenticated: true
@@ -111,16 +112,16 @@ class AuthService {
     localStorage.removeItem('loggedIn')
 
     // navigate to the home route
-    router.replace('/')
+    router.replace('/login')
   }
 
   isAuthenticated () {
     // Check whether the current time is past the
     // access token's expiry time
     const isLoggedIn = localStorage.getItem('loggedIn') === 'true'
-
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}')
     return (
-      this.expiresAt && isLoggedIn && new Date().getTime() < this.expiresAt
+      this.expiresAt && isLoggedIn && new Date().getTime() < expiresAt
     )
   }
 }

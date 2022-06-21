@@ -11,17 +11,17 @@
         <router-link class="nav-link" to="/guide">Guide</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
-        <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
-       <!-- <a :href="$router.resolve({ name: 'profile'}).href">/profile</a>-->
+        <router-link class="nav-link" to="/profile" v-if="isAuthenticated">Profile</router-link>
+        <!-- <a :href="$router.resolve({ name: 'profile'}).href">/profile</a>-->
         <!--   <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a> -->
       </ul>
     </div>
-    <div class = "logo"> <img alt="Website Art" src="../assets/thisthat2.png" height="50"></div>
-    <div class="login" v-if="!authenticated">
-      <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a>
+    <div class="logo"><img alt="Website Art" src="../assets/thisthat2.png" height="50"></div>
+    <div class="login" v-if="!isAuthenticated">
+      <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!isAuthenticated">Login</a>
     </div>
-    <div class="logout" v-if="authenticated">
-      <LogoutButton></LogoutButton>
+    <div class="logout" v-if="isAuthenticated">
+      <LogoutButton>Log out</LogoutButton>
     </div>
   </nav>
 
@@ -29,21 +29,27 @@
 
 <script>
 
-import auth from '@/auth/AuthService'
+import { useAuth0 } from '@auth0/auth0-vue'
 import LogoutButton from '@/components/LogoutButton'
 
 export default {
   name: 'Navbar',
-  props: ['auth', 'authenticated'],
   components: {
     LogoutButton
   },
-  methods: {
-    login () {
-      auth.login()
-    },
-    logout () {
-      auth.logout()
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
+
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
     }
   }
 }
@@ -62,6 +68,7 @@ export default {
   display: block;
   margin-left: 120%;
 }
+
 .logo {
   margin: 0 auto;
 }

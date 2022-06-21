@@ -1,7 +1,9 @@
 <template>
   <div class="gimmespace">
     <div class="body">
-      <div v-if="authenticated">User who Owns this: {{ this.votingOwner }}  .........Users who Voted this: {{usersVoted}} !!</div>
+      <div v-if="isAuthenticated">User who Owns this: {{ this.votingOwner }} .........Users who Voted this:
+        {{ usersVoted }} !!
+      </div>
       <div class="own">
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`">
@@ -16,25 +18,25 @@
               <img :src="voting.image2" class="image2" :alt=" voting.image2"></div>
           </div>
           <div class="owncard-body">
-            <div v-if = "authenticated">
-            <table class="tab">
-              <tr>
-                <th>
-                  <p class="owncard-text">
-                    <button type="submit" @click="putUpvote1">Click</button>
-                  </p>
-                </th>
-                <th>
-                  <p class="owncard-text">
-                    <button type="submit" @click="putUpvote2">Click</button>
-                  </p>
-                </th>
-              </tr>
-              <td><span>{{ votes1 }} Votes</span></td>
-              <td>{{ votes2 }} Votes</td>
-            </table>
+            <div v-if="isAuthenticated">
+              <table class="tab">
+                <tr>
+                  <th>
+                    <p class="owncard-text">
+                      <button type="submit" @click="putUpvote1">Click</button>
+                    </p>
+                  </th>
+                  <th>
+                    <p class="owncard-text">
+                      <button type="submit" @click="putUpvote2">Click</button>
+                    </p>
+                  </th>
+                </tr>
+                <td><span>{{ votes1 }} Votes</span></td>
+                <td>{{ votes2 }} Votes</td>
+              </table>
             </div>
-            <div v-else >
+            <div v-else>
               <table class="tab">
                 <tr>
                   <th>
@@ -52,7 +54,7 @@
                 <td>{{ votes2 }} Votes</td>
               </table>
             </div>
-            <div v-if="authenticated && this.votingOwner === this.profile.sub">
+            <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
               <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             </div>
             <p></p>
@@ -64,11 +66,11 @@
 </template>
 <script>
 
-import router from '@/router'
+import { useAuth0 } from '@auth0/auth0-vue'
 
 export default {
   name: 'VotingCard',
-  props: ['auth', 'voting', 'authenticated'],
+  props: ['voting'],
   data () {
     return {
       votes1: this.voting.votingsImage1,
@@ -76,26 +78,27 @@ export default {
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
       votingOwner: this.voting.ownerId,
-      deletebutton: 'Delete Your Voting',
-      profile: {},
-      user: {}
+      deletebutton: 'Delete Your Voting'
     }
   },
-  created () {
-    if (this.authenticated) {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile
-      } else {
-        this.auth.getProfile((err, profile) => {
-          if (err) return console.log(err)
-          this.profile = profile
-        })
-      }
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
+
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
     }
   },
   methods: {
     putUpvote1 () {
-      if (this.usersVoted.includes(this.profile.sub) === false) {
+      if (this.usersVoted.includes(this.user.sub) === false) {
         const thisid = this.voting.id
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
         const headers = new Headers()
@@ -103,7 +106,7 @@ export default {
         const update = JSON.stringify({
           votingsImage1: this.votes1 + 1,
           votingsImage2: this.votes2,
-          votingUser: this.profile.sub
+          votingUser: this.user.sub
         })
         const requstOptions = {
           method: 'PUT',
@@ -116,7 +119,7 @@ export default {
       }
     },
     putUpvote2 () {
-      if (this.usersVoted.includes(this.profile.sub) === false) {
+      if (this.usersVoted.includes(this.user.sub) === false) {
         const thisid = this.voting.id
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
         const headers = new Headers()
@@ -124,7 +127,7 @@ export default {
         const update = JSON.stringify({
           votingsImage1: this.votes1,
           votingsImage2: this.votes2 + 1,
-          votingUser: this.profile.sub
+          votingUser: this.user.sub
         })
         const requstOptions = {
           method: 'PUT',
@@ -145,9 +148,6 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
-    },
-    login () {
-      router.push({ path: 'login' })
     }
   }
 }

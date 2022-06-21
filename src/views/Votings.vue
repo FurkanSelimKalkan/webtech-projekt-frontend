@@ -1,18 +1,18 @@
 <template>
   <h1>Votings</h1>
   <div class="container-fluid">
-    <votings-card-list :votings="this.votings" @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-card-list>
+    <votings-card-list :votings="this.votings" @created="addVoting"></votings-card-list>
   </div>
-  <votings-create-form @created="addVoting" :auth ="this.auth" :authenticated = "this.authenticated"></votings-create-form>
+  <votings-create-form @created="addVoting"></votings-create-form>
 </template>
 
 <script>
 import VotingsCardList from '@/components/VotingsCardList'
 import VotingsCreateForm from '@/components/VotingCreateForm'
+import { useAuth0 } from '@auth0/auth0-vue'
 
 export default {
   name: 'Votings',
-  props: ['auth', 'authenticated'],
   components: {
     VotingsCardList,
     VotingsCreateForm
@@ -35,7 +35,21 @@ export default {
         .catch(error => console.log('error', error))
     }
   },
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
 
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
+    }
+  },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
     const requstOptions = {

@@ -3,22 +3,19 @@
     <img alt="App logo" src="../assets/logo.png">
     <HelloWorld msg="Get started and discover our App!"/>
     <div v-if="authenticated">
-      <LogoutButton></LogoutButton>
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
-import LogoutButton from '@/components/LogoutButton'
 import auth from '@/auth/AuthService'
 
 export default {
   name: 'HomeView',
   props: ['auth', 'authenticated', 'admin'],
   components: {
-    HelloWorld,
-    LogoutButton
+    HelloWorld
   },
   methods: {
     login () {

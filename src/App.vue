@@ -1,5 +1,5 @@
 <template>
-  <navbar :auth="this.auth" :authenticated ="this.authenticated"></navbar>
+  <navbar :auth="this.auth" :authenticated="this.authenticated"></navbar>
   <div class="container">
     <router-view :auth="auth" :authenticated="authenticated">
     </router-view>
@@ -19,14 +19,7 @@ export default {
       authenticated: auth.authenticated
     }
   },
-  methods: {
-    login () {
-      auth.login()
-    },
-    logout () {
-      auth.logout()
-    }
-  },
+  methods: {},
   created () {
     auth.authNotifier.on('authChange', authState => {
       this.authenticated = authState.authenticated

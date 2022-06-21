@@ -1,6 +1,6 @@
 <template>
-  {{profile}}
-  {{profile.sub}}
+
+  {{ user.sub }}
   <h1>User Profile</h1>
   <section style="background-color: white;">
     <div class="container py-5 h-100">
@@ -10,9 +10,9 @@
             <div class="row g-0">
               <div class="col-md-4 gradient-custom text-center text-white"
                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img :src="profile.picture"
+                <img :src="user.picture"
                      alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
-                <h5>{{ profile.nickname }}</h5>
+                <h5>{{ user.nickname }}</h5>
                 <p>User</p>
                 <i class="far fa-edit mb-5"></i>
               </div>
@@ -23,7 +23,7 @@
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Email</h6>
-                      <p class="text-muted">{{ profile.email }}</p>
+                      <p class="text-muted">{{ user.email }}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Platzhalter</h6>
@@ -63,15 +63,31 @@
       </div>
     </div>
   </section>
+
 </template>
 <script>
 // Composition API
 
+import { useAuth0 } from '@auth0/auth0-vue'
+
 export default {
-  props: ['auth'],
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
+
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
+    }
+  },
   data () {
     return {
-      profile: {},
       votings: [],
       numberofvotings: 0
     }
@@ -85,22 +101,12 @@ export default {
     fetch(endpoint, requstOptions)
       .then(response => response.json())
       .then(result => result.forEach(voting => {
-        if (voting.ownerId === this.profile.sub) {
+        if (voting.ownerId === this.user.sub) {
           this.votings.push(voting)
           this.numberofvotings = this.numberofvotings + 1
         }
       }))
       .catch(error => console.log('error', error))
-  },
-  created () {
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile
-    } else {
-      this.auth.getProfile((err, profile) => {
-        if (err) return console.log(err)
-        this.profile = profile
-      })
-    }
   }
 }
 

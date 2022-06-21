@@ -1,12 +1,19 @@
 <template>
-  <button @click="logout">Log out</button>
+  <div>
+    <button @click="logout">Log out</button>
+  </div>
 </template>
-
 <script>
+import { useAuth0 } from '@auth0/auth0-vue'
+
 export default {
-  methods: {
-    logout () {
-      this.$auth0.logout()
+  setup () {
+    const { logout } = useAuth0()
+
+    return {
+      logout: () => {
+        logout({ returnTo: window.location.origin })
+      }
     }
   }
 }

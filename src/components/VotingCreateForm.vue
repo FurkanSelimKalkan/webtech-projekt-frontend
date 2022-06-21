@@ -4,7 +4,7 @@
     <i class="bi bi-voting-plus-fill">Voting erstellen</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
-    <div v-if="authenticated">
+    <div v-if="isAuthenticated">
       <div class="offcanvas-header">
         <h5 id="offcanvas-label">New Voting</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -50,57 +50,49 @@
         </form>
       </div>
     </div>
-    <div v-if="!authenticated">
+    <div v-if="!isAuthenticated">
       <h1>Bitte erst einloggen!</h1>
       <div id="hiw-login-container"></div>
-      <button
-        class="btn btn-primary btn-margin"
-        id="qsLoginBtn"
-        v-if="!authenticated"
-        @click="login"
-      >
-        Log In O_O
-      </button>
+      <LoginButton v-if="!isAuthenticated"></LoginButton>
     </div>
   </div>
 </template>
 
 <script>
 
-import auth from '@/auth/AuthService'
+import { useAuth0 } from '@auth0/auth0-vue'
+import LoginButton from '@/components/LoginButton'
 
 export default {
   name: 'VotingCreateForm',
-  props: ['auth', 'authenticated', 'admin'],
+  components: {
+    LoginButton
+  },
   data () {
     return {
       title: '',
       image1: '',
       image2: '',
       text: String,
-      colot: String,
-      profile: {}
+      colot: String
     }
   },
-  created () {
-    if (this.authenticated) {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile
-      } else {
-        this.auth.getProfile((err, profile) => {
-          if (err) return console.log(err)
-          this.profile = profile
-        })
-      }
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
+
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
     }
   },
   methods: {
-    login () {
-      auth.login()
-    },
-    logout () {
-      auth.logout()
-    },
     showUploadWidget () {
       window.cloudinary.openUploadWidget({
         cloudName: 'dcima9c0k',
@@ -185,8 +177,8 @@ export default {
           title: this.title,
           image1: this.image1,
           image2: this.image2,
-          ownerId: this.profile.sub,
-          userName: this.profile.nickname
+          ownerId: this.user.sub,
+          userName: this.user.nickname
         })
 
         const requestOptions = {

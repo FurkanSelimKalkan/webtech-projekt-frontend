@@ -1,32 +1,36 @@
 <template>
   <div id="hiw-login-container"></div>
-  <h4 v-if="!authenticated">
-    You are not logged in! Please <a @click="auth.login();">Log In</a> to
-    continue.
+  <h4 v-if="!isAuthenticated">
+    You are not logged in!
   </h4>
-  <button
-    class="btn btn-primary btn-margin"
-    id="qsLoginBtn"
-    v-if="!authenticated"
-    @click="login"
-  >
-    Log In
-  </button>
+  <LoginButton v-if="!isAuthenticated"></LoginButton>
 </template>
 
 <script>
-import auth from '@/auth/AuthService'
+import { useAuth0 } from '@auth0/auth0-vue'
+import LoginButton from '@/components/LoginButton'
 
 export default {
-  name: 'Login',
-  props: ['auth', 'authenticated', 'admin'],
-  methods: {
-    login () {
-      auth.login()
-    },
-    logout () {
-      auth.logout()
+  setup () {
+    const {
+      loginWithRedirect,
+      user,
+      isAuthenticated
+    } = useAuth0()
+
+    return {
+      login: () => {
+        loginWithRedirect()
+      },
+      user,
+      isAuthenticated
     }
+  },
+  name: 'Login',
+  methods: {
+  },
+  components: {
+    LoginButton
   }
 }
 </script>
