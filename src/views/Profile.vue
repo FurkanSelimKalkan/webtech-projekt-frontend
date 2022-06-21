@@ -85,7 +85,7 @@ export default {
     fetch(endpoint, requstOptions)
       .then(response => response.json())
       .then(result => result.forEach(voting => {
-        if (voting.user === this.profile.sub) {
+        if (voting.ownerId === this.profile.sub) {
           this.votings.push(voting)
           this.numberofvotings = this.numberofvotings + 1
         }
