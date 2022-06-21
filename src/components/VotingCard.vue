@@ -93,9 +93,6 @@ export default {
       }
     }
   },
-  mounted () {
-    this.fetchVotings()
-  },
   methods: {
     putUpvote1 () {
       if (this.usersVoted.includes(this.profile.sub) === false) {
@@ -116,7 +113,6 @@ export default {
         }
         fetch(endpoint, requstOptions)
         this.votes1 = this.votes1 + 1
-        console.log(this.profile.sub)
       }
     },
     putUpvote2 () {
