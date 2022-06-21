@@ -12,6 +12,7 @@
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
         <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
+       <!-- <a :href="$router.resolve({ name: 'profile'}).href">/profile</a>-->
         <!--   <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a> -->
       </ul>
     </div>

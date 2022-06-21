@@ -55,7 +55,6 @@
             <div v-if="authenticated && this.votingOwner === this.profile.sub">
               <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             </div>
-            <div v-else>kein button</div>
             <p></p>
           </div>
         </div>
@@ -76,8 +75,8 @@ export default {
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
-      votingOwner: this.voting.userName,
-      deletebutton: 'Delete',
+      votingOwner: this.voting.ownerId,
+      deletebutton: 'Delete Your Voting',
       profile: {},
       user: {}
     }
@@ -93,6 +92,9 @@ export default {
         })
       }
     }
+  },
+  mounted () {
+    this.fetchVotings()
   },
   methods: {
     putUpvote1 () {
@@ -114,7 +116,7 @@ export default {
         }
         fetch(endpoint, requstOptions)
         this.votes1 = this.votes1 + 1
-        this.usersVoted = this.usersVoted.add(this.profile.sub)
+        console.log(this.profile.sub)
       }
     },
     putUpvote2 () {
@@ -136,7 +138,6 @@ export default {
         }
         fetch(endpoint, requstOptions)
         this.votes2 = this.votes2 + 1
-        this.usersVoted = this.usersVoted.add(this.profile.sub)
       }
     },
     delete1 () {
