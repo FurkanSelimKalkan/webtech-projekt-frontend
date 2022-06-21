@@ -76,7 +76,7 @@ export default {
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
-      votingOwner: this.voting.ownerId,
+      votingOwner: this.voting.userName,
       deletebutton: 'Delete',
       profile: {},
       user: {}

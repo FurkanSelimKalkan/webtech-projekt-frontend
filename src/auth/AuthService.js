@@ -55,7 +55,7 @@ class AuthService {
       })
 
       // navigate to the home route
-      router.push('/')
+      //  router.push('/')
     }
   }
 
