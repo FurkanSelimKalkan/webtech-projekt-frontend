@@ -54,6 +54,15 @@
                 <td>{{ votes2 }} Votes</td>
               </table>
             </div>
+            <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
+              <vue3-chart-js
+                :id="doughnutChart.id"
+                ref="chartRef"
+                :type="doughnutChart.type"
+                :data="doughnutChart.data"
+                :options="doughnutChart.options"
+              ></vue3-chart-js>
+            </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
               <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             </div>
@@ -67,12 +76,18 @@
 <script>
 
 import { useAuth0 } from '@auth0/auth0-vue'
+import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import { ref } from 'vue'
 
 export default {
   name: 'VotingCard',
   props: ['voting'],
+  components: {
+    Vue3ChartJs
+  },
   data () {
     return {
+      loaded: false,
       votes1: this.voting.votingsImage1,
       votes2: this.voting.votingsImage2,
       votingid: this.voting.id,
@@ -81,19 +96,41 @@ export default {
       deletebutton: 'Delete Your Voting'
     }
   },
-  setup () {
+  setup (props) {
     const {
       loginWithRedirect,
       user,
       isAuthenticated
     } = useAuth0()
+    const chartRef = ref(null)
+    const doughnutChart = {
+      id: 'doughnut',
+      type: 'doughnut',
+      data: {
+        labels: ['Image 1', 'Image 2'],
+        datasets: [
+          {
+            backgroundColor: [
+              '#ffb619',
+              '#E46651'
+            ],
+            data: [props.voting.votingsImage1, props.voting.votingsImage2]
+          }
+        ]
+      },
+      options: {
+        plugins: {}
+      }
+    }
 
     return {
       login: () => {
         loginWithRedirect()
       },
       user,
-      isAuthenticated
+      isAuthenticated,
+      doughnutChart,
+      chartRef
     }
   },
   methods: {
@@ -154,6 +191,7 @@ export default {
 </script>
 
 <style scoped>
+
 .gimmespace {
   position: relative;
   top: 10px;
