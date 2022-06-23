@@ -1,5 +1,4 @@
 <template>
-
   {{ user.sub }}
   <h1>User Profile</h1>
   <section style="background-color: white;">
