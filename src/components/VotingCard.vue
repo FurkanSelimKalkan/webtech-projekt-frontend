@@ -23,12 +23,12 @@
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button type="submit" @click="putUpvote1">Click</button>
+                      <button class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
                     </p>
                   </th>
                   <th>
                     <p class="owncard-text">
-                      <button type="submit" @click="putUpvote2">Click</button>
+                      <button class="VotingButton" type="submit" @click="putUpvote2">Vote</button>
                     </p>
                   </th>
                 </tr>
@@ -41,12 +41,12 @@
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button type="submit" @click="login">Click</button>
+                      <button class="VotingButton" type="submit" @click="login">Vote</button>
                     </p>
                   </th>
                   <th>
                     <p class="owncard-text">
-                      <button type="submit" @click="login">Click</button>
+                      <button class="VotingButton" type="submit" @click="login">Vote</button>
                     </p>
                   </th>
                 </tr>
@@ -256,4 +256,13 @@ export default {
   padding: 10px;
 }
 
+.VotingButton {
+  background-color: #76c1ff;
+  border-radius:12px;
+}
+
+.owncard {
+  background-color: #e0e0bd;
+  border: 5px outset goldenrod;
+}
 </style>

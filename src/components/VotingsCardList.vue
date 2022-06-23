@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="col" v-for="voting in votings" :key="voting.id">
-      <voting-card :voting="voting"></voting-card>
+      <voting-card class="cards" :voting="voting"></voting-card>
     </div>
   </div>
 </template>
@@ -19,5 +19,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

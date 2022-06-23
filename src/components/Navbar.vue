@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-light">
+  <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-info">
     <img alt="Home Logo" src="../assets/logo.png" height="50">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,6 @@
       <LogoutButton>Log out</LogoutButton>
     </div>
   </nav>
-
 </template>
 
 <script>
@@ -71,5 +70,9 @@ export default {
 
 .logo {
   margin: 0 auto;
+}
+
+.navi {
+
 }
 </style>
