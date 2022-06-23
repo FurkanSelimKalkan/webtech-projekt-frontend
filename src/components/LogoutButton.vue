@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="logout">Log out</button>
+    <button class="LogoutButton" @click="logout">Log out</button>
   </div>
 </template>
 <script>
@@ -18,3 +18,17 @@ export default {
   }
 }
 </script>
+
+<style>
+.LogoutButton {
+  background-color: #f30808;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:50%;
+}
+</style>

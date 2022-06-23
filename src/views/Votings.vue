@@ -1,9 +1,11 @@
 <template>
+  <div>
   <h1>Votings</h1>
   <div class="container-fluid">
     <votings-card-list :votings="this.votings" @created="addVoting"></votings-card-list>
   </div>
   <votings-create-form @created="addVoting"></votings-create-form>
+  </div>
 </template>
 
 <script>

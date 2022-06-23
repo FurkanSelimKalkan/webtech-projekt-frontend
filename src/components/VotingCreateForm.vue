@@ -1,59 +1,61 @@
 <template>
-  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
-          aria-controls="#votings-create-offcanvas">
-    <i class="bi bi-voting-plus-fill">Voting erstellen</i>
-  </button>
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
-    <div v-if="isAuthenticated">
-      <div class="offcanvas-header">
-        <h5 id="offcanvas-label">New Voting</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div>
-        <button @click="showUploadWidget()">Upload Image1</button>
-        <button @click="showUploadWidget2()">Upload Image2</button>
-      </div>
-      <div class="offcanvas-body">
-        <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
-          <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type=text class="form-control" id=title v-model=title required>
-            <div class="invalid-feedback">
-              Please provide the title.
+  <div>
+    <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
+            aria-controls="#votings-create-offcanvas">
+      <i class="bi bi-voting-plus-fill">Voting erstellen</i>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
+      <div v-if="isAuthenticated">
+        <div class="offcanvas-header">
+            <h5 id="offcanvas-label"> Create new Voting</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div>
+          <button class="uploadImageButton" @click="showUploadWidget()">Upload Image1</button>
+          <button class="uploadImageButton" @click="showUploadWidget2()">Upload Image2</button>
+        </div>
+        <div class="offcanvas-body">
+          <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type=text class="form-control" id=title v-model=title required>
+              <div class="invalid-feedback">
+                Please provide the title.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="image1" class="form-label">Image1</label>
-            <input type=text class="form-control" id=image1 v-model=image1 required>
-            <div class="invalid-feedback">
-              Please provide a image URL.
+            <div class="mb-3">
+              <label for="image1" class="form-label">Image1</label>
+              <input type=text class="form-control" id=image1 v-model=image1 required>
+              <div class="invalid-feedback">
+                Please a Image.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for=image2 class="form-label">Image2</label>
-            <input type=text class="form-control" id=image2 v-model=image2 required>
-            <div class="invalid-feedback">
-              Please provide a image URL.
+            <div class="mb-3">
+              <label for=image2 class="form-label">Image2</label>
+              <input type=text class="form-control" id=image2 v-model=image2 required>
+              <div class="invalid-feedback">
+                Please upload a image .
+              </div>
             </div>
-          </div>
-          <div v-if="this.serverValidationMessages">
-            <ul>
-              <li v-for="(message, index) in serverValidationMessages" :key="index" style="color: red">
-                {{ message }}
-              </li>
-            </ul>
-          </div>
-          <div class="mt-5">
-            <button class="btn btn-primary me-3" type="submit" @click="createVoting()">Create</button>
-            <button class="btn btn-danger" type="reset">Reset</button>
-          </div>
-        </form>
+            <div v-if="this.serverValidationMessages">
+              <ul>
+                <li v-for="(message, index) in serverValidationMessages" :key="index" style="color: red">
+                  {{ message }}
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5">
+              <button class="CreateButton" type="submit" @click="createVoting()">Create</button>
+              <button class="ResetButton" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-    <div v-if="!isAuthenticated">
-      <h1>Bitte erst einloggen!</h1>
-      <div id="hiw-login-container"></div>
-      <LoginButton v-if="!isAuthenticated"></LoginButton>
+      <div v-if="!isAuthenticated">
+        <h1>Bitte erst einloggen!</h1>
+        <div id="hiw-login-container"></div>
+        <LoginButton v-if="!isAuthenticated"></LoginButton>
+      </div>
     </div>
   </div>
 </template>
@@ -225,6 +227,46 @@ export default {
   padding: 20px 30px;
   border-radius: 300px;
   z-index: 9999;
+}
+
+.CreateButton {
+  background-color: #2c57fd;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:12px;
+}
+
+.ResetButton {
+  background-color: #f30808;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:12px;
+}
+
+.uploadImageButton {
+  background-color: #15bd0e;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:12px;
+}
+
+.offcanvas-header {
+  background-color: #148f56;
 }
 
 </style>

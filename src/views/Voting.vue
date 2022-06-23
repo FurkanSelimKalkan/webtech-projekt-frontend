@@ -1,6 +1,8 @@
 <template>
+  <div>
   <voting-card :voting="this.voting" :key="this.voting.id"></voting-card>
   <votings-create-form @created="addVoting"></votings-create-form>
+  </div>
 </template>
 
 <script>

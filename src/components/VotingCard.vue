@@ -108,7 +108,7 @@ export default {
       id: 'doughnut',
       type: 'doughnut',
       data: {
-        labels: ['Image 1', 'Image 2'],
+        labels: ['Left Image 1', 'Right Image 2'],
         datasets: [
           {
             backgroundColor: [

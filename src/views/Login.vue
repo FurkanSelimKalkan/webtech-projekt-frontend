@@ -2,8 +2,8 @@
   <div id="hiw-login-container"></div>
   <h4 v-if="!isAuthenticated">
     You are not logged in!
+    <div><LoginButton></LoginButton></div>
   </h4>
-  <LoginButton v-if="!isAuthenticated"></LoginButton>
 </template>
 
 <script>

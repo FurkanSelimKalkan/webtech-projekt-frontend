@@ -1,6 +1,6 @@
 // LoginButton.vue
 <template>
-  <button @click="login">Log in</button>
+  <button class="LoginButton" @click="login">Log in</button>
 </template>
 
 <script>
@@ -18,3 +18,18 @@ export default {
   }
 }
 </script>
+
+<style>
+.LoginButton {
+  background-color: #0b5ed7;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px;
+  border-radius:12px;
+}
+</style>
