@@ -50,8 +50,8 @@
                     </p>
                   </th>
                 </tr>
-               <td><span>{{ votes1 }} Votes</span></td>
-                <td>{{ votes2 }} Votes</td>
+               <td><span v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes1 }} Votes</span></td>
+                <td v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes2 }} Votes</td>
               </table>
             </div>
             <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
