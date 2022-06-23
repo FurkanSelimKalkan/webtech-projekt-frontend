@@ -19,9 +19,12 @@ export default {
 
 <style>
 .LogoutButton {
+  color: #0000008C;
   border: 0px solid;
   background-color: transparent;
   align-items: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 </style>

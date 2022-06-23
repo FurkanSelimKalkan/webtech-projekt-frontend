@@ -19,7 +19,7 @@
           </div>
           <div class="owncard-body">
             <div v-if="isAuthenticated">
-              <table class="tab" v-if="!this.usersVoted.includes(this.user.sub)">
+              <table class="tab">
                 <tr>
                   <th>
                     <p class="owncard-text">
@@ -67,7 +67,7 @@
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
-              <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
+              <button type="submit" class="delete-button" @click="delete1">{{ deletebutton }}</button>
             </div>
             <p></p>
             <div class="input-group mb-2 mr-sm-2">
@@ -272,8 +272,27 @@ export default {
 .VotingButton {
   background-color: #76c1ff;
   border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
 }
 
+.VotingButton:hover {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
+  background-color: red;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #b90303;
+  color: white;
+}
 .owncard {
   background-color: #f1f1e4;
   border: 5px outset goldenrod;

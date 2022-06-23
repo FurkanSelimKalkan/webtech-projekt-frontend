@@ -22,11 +22,11 @@
       <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
         <li><a class="dropdown-item" href="#">
-          <router-link class="nav-link" to="/profile">Profile</router-link>
+          <router-link class="dropdown-item" to="/profile">Profile</router-link>
         </a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-itemlogout" href="#">
+        <li class="logout"><a class="dropdown-item" href="#">
           <div v-if="isAuthenticated">
             <LogoutButton>Log out</LogoutButton>
           </div>
@@ -89,4 +89,14 @@ export default {
   list-style-type: none;
 }
 
+.dropdown-item {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0000008C;
+}
+
+.logout {
+  border-radius: 12px;
+  background-color: red;
+}
 </style>
