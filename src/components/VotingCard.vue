@@ -19,11 +19,11 @@
           </div>
           <div class="owncard-body">
             <div v-if="isAuthenticated">
-              <table class="tab">
+              <table class="tab" v-if="!this.usersVoted.includes(this.user.sub)">
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
+                      <button class="VotingButton" type="submit" @click="putUpvote1" >Vote</button>
                     </p>
                   </th>
                   <th>
@@ -50,28 +50,37 @@
                     </p>
                   </th>
                 </tr>
-               <td><span v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes1 }} Votes</span></td>
+                <td><span v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes1 }} Votes</span>
+                </td>
                 <td v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes2 }} Votes</td>
               </table>
             </div>
             <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
-            <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
-              <vue3-chart-js
-                :id="doughnutChart.id"
-                ref="chartRef"
-                :type="doughnutChart.type"
-                :data="doughnutChart.data"
-                :options="doughnutChart.options"
-              ></vue3-chart-js></div>
+              <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
+                <vue3-chart-js
+                  :id="doughnutChart.id"
+                  ref="chartRef"
+                  :type="doughnutChart.type"
+                  :data="doughnutChart.data"
+                  :options="doughnutChart.options"
+                ></vue3-chart-js>
+              </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
               <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
             </div>
             <p></p>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+              </div>
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername2" v-model="value">
+              <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 <script>
@@ -79,6 +88,7 @@
 import { useAuth0 } from '@auth0/auth0-vue'
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 import { ref } from 'vue'
+import { toClipboard } from '@soerenmartius/vue3-clipboard'
 
 export default {
   name: 'VotingCard',
@@ -98,6 +108,7 @@ export default {
     }
   },
   setup (props) {
+    const value = ref('https://this-or-that-webapp-frontend.herokuapp.com/votings/' + props.voting.id)
     const {
       loginWithRedirect,
       user,
@@ -131,7 +142,9 @@ export default {
       user,
       isAuthenticated,
       doughnutChart,
-      chartRef
+      chartRef,
+      value,
+      toClipboard
     }
   },
   methods: {
@@ -258,7 +271,7 @@ export default {
 
 .VotingButton {
   background-color: #76c1ff;
-  border-radius:12px;
+  border-radius: 12px;
 }
 
 .owncard {
