@@ -11,17 +11,28 @@
         <router-link class="nav-link" to="/guide">Guide</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
         <router-link class="nav-link" to="/votings">Votings</router-link>
-        <router-link class="nav-link" to="/profile" v-if="isAuthenticated">Profile</router-link>
-        <!-- <a :href="$router.resolve({ name: 'profile'}).href">/profile</a>-->
-        <!--   <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!authenticated">Login</a> -->
       </ul>
     </div>
     <div class="logo"><img alt="Website Art" src="../assets/thisthat2.png" height="50"></div>
     <div class="login" v-if="!isAuthenticated">
-      <a :href="$router.resolve({name: 'Login'}).href" class="nav-link" v-if="!isAuthenticated">Login</a>
+      <LoginButton>Login</LoginButton>
     </div>
-    <div class="logout" v-if="isAuthenticated">
-      <LogoutButton>Log out</LogoutButton>
+    <div v-if="isAuthenticated">
+    <li class="dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+      <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+        <li><a class="dropdown-item" href="#">
+          <router-link class="nav-link" to="/profile">Profile</router-link>
+        </a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-itemlogout" href="#">
+          <div v-if="isAuthenticated">
+            <LogoutButton>Log out</LogoutButton>
+          </div>
+        </a></li>
+      </ul>
+    </li>
     </div>
   </nav>
 </template>
@@ -30,11 +41,13 @@
 
 import { useAuth0 } from '@auth0/auth0-vue'
 import LogoutButton from '@/components/LogoutButton'
+import LoginButton from '@/components/LoginButton'
 
 export default {
   name: 'Navbar',
   components: {
-    LogoutButton
+    LogoutButton,
+    LoginButton
   },
   setup () {
     const {
@@ -72,7 +85,8 @@ export default {
   margin: 0 auto;
 }
 
-.navi {
-
+.dropdown {
+  list-style-type: none;
 }
+
 </style>
