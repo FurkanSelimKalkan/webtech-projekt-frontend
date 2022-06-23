@@ -50,10 +50,11 @@
                     </p>
                   </th>
                 </tr>
-                <td><span>{{ votes1 }} Votes</span></td>
+               <td><span>{{ votes1 }} Votes</span></td>
                 <td>{{ votes2 }} Votes</td>
               </table>
             </div>
+            <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
             <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
               <vue3-chart-js
                 :id="doughnutChart.id"
@@ -61,7 +62,7 @@
                 :type="doughnutChart.type"
                 :data="doughnutChart.data"
                 :options="doughnutChart.options"
-              ></vue3-chart-js>
+              ></vue3-chart-js></div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
               <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
