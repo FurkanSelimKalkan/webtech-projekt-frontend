@@ -262,7 +262,7 @@ export default {
 }
 
 .owncard {
-  background-color: #e0e0bd;
+  background-color: #f1f1e4;
   border: 5px outset goldenrod;
 }
 </style>

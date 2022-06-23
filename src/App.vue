@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="allApp">
   <navbar :auth="this.auth" :authenticated="this.authenticated"></navbar>
   <div class="container">
     <router-view :auth="auth" :authenticated="authenticated">
@@ -56,5 +56,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.allApp{
+  background-color: #fbf7ff;
 }
 </style>
