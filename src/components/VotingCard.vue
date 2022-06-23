@@ -67,7 +67,16 @@
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
-              <button type="submit" class="delete-button" @click="delete1">{{ deletebutton }}</button>
+              <div v-if="deletebutton">
+                <button type="submit" class="deleted" @click="delete1">
+                  <input type="button" class="deleted" value="Successfully deleted ✓" />
+                </button>
+              </div>
+              <div v-else>
+                <button type="submit" class="delete-button" @click="delete1">
+                  Delete your Voting
+                </button>
+              </div>
             </div>
             <p></p>
             <div class="input-group mb-2 mr-sm-2">
@@ -104,7 +113,7 @@ export default {
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
       votingOwner: this.voting.ownerId,
-      deletebutton: 'Delete Your Voting'
+      deletebutton: false
     }
   },
   setup (props) {
@@ -166,6 +175,7 @@ export default {
           redirect: 'follow'
         }
         fetch(endpoint, requstOptions)
+        this.usersVoted.push(this.user.sub)
         this.votes1 = this.votes1 + 1
       }
     },
@@ -187,10 +197,12 @@ export default {
           redirect: 'follow'
         }
         fetch(endpoint, requstOptions)
+        this.usersVoted.push(this.user.sub)
         this.votes2 = this.votes2 + 1
       }
     },
     delete1 () {
+      this.deletebutton = true
       const thisid = this.voting.id
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
       const requstOptions = {
@@ -199,6 +211,7 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
+      this.$forceUpdate()
     }
   }
 }
@@ -287,6 +300,14 @@ export default {
   border: none;
   background-color: red;
   color: white;
+}
+
+.deleted {
+  border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
+  background-color: #15bd0e;
+  color: #000000;
 }
 
 .delete-button:hover {

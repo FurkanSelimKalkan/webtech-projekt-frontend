@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button type="button" class="discover-button" @click="$router.push('guide')" >Discover</button>
+    <button type="button" class="discover-button" @click="$router.push('guide')" >Guide</button>
   </div>
 </template>
 
