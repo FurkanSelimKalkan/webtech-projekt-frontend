@@ -23,7 +23,7 @@
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button class="VotingButton" type="submit" @click="putUpvote1" >Vote</button>
+                      <button class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
                     </p>
                   </th>
                   <th>
@@ -167,6 +167,7 @@ export default {
         }
         fetch(endpoint, requstOptions)
         this.votes1 = this.votes1 + 1
+        this.usersVoted.push(this.user.sub)
       }
     },
     putUpvote2 () {
@@ -188,6 +189,7 @@ export default {
         }
         fetch(endpoint, requstOptions)
         this.votes2 = this.votes2 + 1
+        this.usersVoted.push(this.user.sub)
       }
     },
     delete1 () {
