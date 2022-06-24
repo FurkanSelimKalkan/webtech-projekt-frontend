@@ -66,6 +66,7 @@
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
+              <br>
               <div v-if="deletebutton">
                 <button type="submit" class="deleted" @click="delete1">
                   <input type="button" class="deleted" value="Successfully deleted ✓"/>

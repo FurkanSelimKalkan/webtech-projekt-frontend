@@ -102,4 +102,7 @@ export default {
   background-color: red;
 }
 
+.dropdown-menu {
+}
+
 </style>
