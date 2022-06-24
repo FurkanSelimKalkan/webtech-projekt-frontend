@@ -20,14 +20,14 @@
               <label for="title" class="form-label">Title</label>
               <input type=text class="form-control" id=title v-model=title required>
               <div class="invalid-feedback">
-                Please provide the title.
+                Please provide a Title with 5-20 Characters.
               </div>
             </div>
             <div class="mb-3">
               <label for="image1" class="form-label">Image1</label>
               <input type=text class="form-control" id=image1 v-model=image1 required>
               <div class="invalid-feedback">
-                Please a Image.
+                Please upload a Image.
               </div>
             </div>
             <div class="mb-3">
