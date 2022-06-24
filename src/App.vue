@@ -58,15 +58,16 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-.allApp{
-  background-color: #fbf7ff;
-  position: fixed;
-  top: 0;
-  bottom:0;
+#allScreen {
+  position:fixed;
+  padding:0;
+  margin:0;
 
-  width: 100vw; /* viewport width */
-  height: 100vh; /* viewport height */
-  overflow-y: scroll;
-  overflow-x: hidden;
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background:rgba(255,255,255,0.5);
 }
 </style>

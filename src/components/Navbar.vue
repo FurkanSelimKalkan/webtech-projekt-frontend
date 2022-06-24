@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar sticky-top  navbar-light navbar-expand-sm bg-info">
+  <nav class="navbar sticky-top navbar-light navbar-expand-sm bg-info">
     <img alt="Home Logo" src="../assets/logo.png" height="50">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,4 +101,5 @@ export default {
   border-radius: 12px;
   background-color: red;
 }
+
 </style>
