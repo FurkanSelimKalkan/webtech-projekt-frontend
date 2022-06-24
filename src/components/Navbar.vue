@@ -24,7 +24,9 @@
         <li><a class="dropdown-item" href="#">
           <router-link class="dropdown-item" to="/profile">Profile</router-link>
         </a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">
+          <router-link class="dropdown-item" to="/myVotings">My Votings</router-link>
+        </a></li>
         <li><hr class="dropdown-divider"></li>
         <li class="logout"><a class="dropdown-item" href="#">
           <div v-if="isAuthenticated">
