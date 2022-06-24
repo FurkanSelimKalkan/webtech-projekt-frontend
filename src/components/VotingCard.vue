@@ -68,7 +68,7 @@
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
               <div v-if="deletebutton">
                 <button type="submit" class="deleted" @click="delete1">
-                  <input type="button" class="deleted" value="Successfully deleted ✓" />
+                  <input type="button" class="deleted" value="Successfully deleted ✓"/>
                 </button>
               </div>
               <div v-else>
@@ -82,7 +82,7 @@
               <div class="input-group-prepend">
               </div>
               <input type="text" class="form-control" id="inlineFormInputGroupUsername2" v-model="value">
-                <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
+              <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
             </div>
           </div>
         </div>
@@ -176,7 +176,6 @@ export default {
         fetch(endpoint, requstOptions)
         this.usersVoted.push(this.user.sub)
         this.votes1 = this.votes1 + 1
-        this.usersVoted.push(this.user.sub)
       }
     },
     putUpvote2 () {
@@ -199,7 +198,6 @@ export default {
         fetch(endpoint, requstOptions)
         this.usersVoted.push(this.user.sub)
         this.votes2 = this.votes2 + 1
-        this.usersVoted.push(this.user.sub)
       }
     },
     delete1 () {
@@ -315,6 +313,7 @@ export default {
   background-color: #b90303;
   color: white;
 }
+
 .owncard {
   background-color: #f1f1e4;
   border: 5px outset goldenrod;
@@ -326,7 +325,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  20px "Luminary", cursive;
+  font: 20px "Luminary", cursive;
 }
 
 .owncard-title {
@@ -335,10 +334,10 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  30px "Bradley Hand", cursive;
+  font: 30px "Bradley Hand", cursive;
 }
 
-.owncard-title:hover{
+.owncard-title:hover {
   color: #0000008C;
 
   background-color: transparent;

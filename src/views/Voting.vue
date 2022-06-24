@@ -1,8 +1,6 @@
 <template>
-  <div>
   <voting-card :voting="this.voting" :key="this.voting.id"></voting-card>
   <votings-create-form @created="addVoting"></votings-create-form>
-  </div>
 </template>
 
 <script>
@@ -33,7 +31,7 @@ export default {
         .catch(error => console.log('error', error))
     }
   },
-  mounted () {
+  created () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + this.$route.params.id
     const requstOptions = {
       method: 'GET',
@@ -45,6 +43,7 @@ export default {
         this.voting = voting
       })
       .catch(error => console.log('error', error))
+    this.loaded = true
   }
 }
 </script>
