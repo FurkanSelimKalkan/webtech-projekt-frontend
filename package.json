@@ -27,8 +27,10 @@
     "express": "^4.18.1",
     "jwt-decode": "^3.1.2",
     "vue": "^3.2.13",
+    "vue-carousel": "^0.18.0",
     "vue-chartjs": "^4.1.1",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue3-carousel": "^0.1.40"
   },
   "devDependencies": {
     "@auth0/auth0-vue": "^1.0.1",

@@ -1,10 +1,8 @@
 <template>
-  <div class="allApp">
   <navbar :auth="this.auth" :authenticated="this.authenticated"></navbar>
   <div class="container">
     <router-view :auth="auth" :authenticated="authenticated">
     </router-view>
-  </div>
   </div>
 </template>
 
