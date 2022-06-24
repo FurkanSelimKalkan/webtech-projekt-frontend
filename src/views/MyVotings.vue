@@ -1,22 +1,22 @@
 <template>
   <div>
-  <h1 class="header1">Votings</h1>
-  <div class="container-fluid">
-    <votings-card-list :votings="this.votings" @created="addVoting"></votings-card-list>
-  </div>
-  <votings-create-form @created="addVoting"></votings-create-form>
+    <h1>Votings</h1>
+    <div class="container-fluid">
+      <voting-card-list-owner :votings="this.votings" @created="addVoting"></voting-card-list-owner>
+    </div>
+    <votings-create-form @created="addVoting"></votings-create-form>
   </div>
 </template>
 
 <script>
-import VotingsCardList from '@/components/VotingsCardList'
+import VotingCardListOwner from '@/components/VotingCardListOwner'
 import VotingsCreateForm from '@/components/VotingCreateForm'
 import { useAuth0 } from '@auth0/auth0-vue'
 
 export default {
-  name: 'Votings',
+  name: 'MyVotings',
   components: {
-    VotingsCardList,
+    VotingCardListOwner,
     VotingsCreateForm
   },
   data () {
@@ -65,18 +65,9 @@ export default {
       }))
       .catch(error => console.log('error', error))
   }
-
 }
 </script>
 
 <style scoped>
-.header1 {
-  color: #0000008C;
-
-  background-color: transparent;
-  border: transparent;
-  font-size: 40px;
-  font-weight: bold;
-}
 
 </style>

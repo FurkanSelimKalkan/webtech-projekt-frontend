@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button type="button" class="btn btn-primary">Discover</button>
+    <button type="button" class="discover-button" @click="$router.push('guide')" >Guide</button>
   </div>
 </template>
 
@@ -29,5 +29,17 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.discover-button {
+  background-color: #76c1ff;
+  border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
+}
+
+.discover-button:hover {
+  background-color: green;
+  color: white;
 }
 </style>

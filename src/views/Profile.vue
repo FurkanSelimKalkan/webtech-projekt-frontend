@@ -1,7 +1,5 @@
 <template>
-
-  {{ user.sub }}
-  <h1>User Profile</h1>
+  <h1 class="header1">User Profile</h1>
   <section style="background-color: white;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -14,7 +12,6 @@
                      alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
                 <h5>{{ user.nickname }}</h5>
                 <p>User</p>
-                <i class="far fa-edit mb-5"></i>
               </div>
               <div class="col-md-8">
                 <div class="card-body p-4">
@@ -26,11 +23,11 @@
                       <p class="text-muted">{{ user.email }}</p>
                     </div>
                     <div class="col-6 mb-3">
-                      <h6>Platzhalter</h6>
-                      <p class="text-muted">Platzhalter</p>
+                      <h6>verified</h6>
+                      <p class="text-muted" > {{ user.email_verified }}</p>
                     </div>
                   </div>
-                  <h6>Statistik</h6>
+                  <h6>Statistics</h6>
                   <hr class="mt-0 mb-4">
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
@@ -39,15 +36,17 @@
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Erhaltene Voting Stimmen</h6>
-                      <p class="text-muted">Idee</p>
+                      <p class="text-muted">{{ numberOfExternalVotes }}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Verteilte Voting Stimmen</h6>
-                      <p class="text-muted">Idee</p>
+                      <p class="text-muted">{{ this.numberOfVotes }}</p>
                     </div>
                     <div class="col-6 mb-3">
-                      <h6>Most Viewed</h6>
-                      <p class="text-muted">Dolor sit amet</p>
+                      <h6>Share our App with this QR-Code</h6>
+                      <p class="text-muted">
+                        <img :src=this.qrCodeUrl alt="" title="" />
+                      </p>
                     </div>
                   </div>
                   <div class="d-flex justify-content-start">
@@ -89,7 +88,10 @@ export default {
   data () {
     return {
       votings: [],
-      numberofvotings: 0
+      qrCodeUrl: 'http://api.qrserver.com/v1/create-qr-code/?data=' + process.env.VUE_APP_FRONTEND_BASE_URL + '&size=60x60',
+      numberofvotings: 0,
+      numberOfVotes: 0,
+      numberOfExternalVotes: 0
     }
   },
   mounted () {
@@ -103,7 +105,12 @@ export default {
       .then(result => result.forEach(voting => {
         if (voting.ownerId === this.user.sub) {
           this.votings.push(voting)
+          this.numberOfExternalVotes = this.numberOfExternalVotes + voting.votedUsers.length
           this.numberofvotings = this.numberofvotings + 1
+        }
+        if (voting.votedUsers.includes(this.user.sub)) {
+          this.votings.push(voting)
+          this.numberOfVotes = this.numberOfVotes + 1
         }
       }))
       .catch(error => console.log('error', error))
@@ -122,6 +129,15 @@ export default {
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+
+.header1 {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 </style>

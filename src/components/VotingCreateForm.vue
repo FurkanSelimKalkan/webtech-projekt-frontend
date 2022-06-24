@@ -2,7 +2,7 @@
   <div>
     <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
             aria-controls="#votings-create-offcanvas">
-      <i class="bi bi-voting-plus-fill">Voting erstellen</i>
+      <i class="bi bi-voting-plus-fill">Create Voting</i>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
       <div v-if="isAuthenticated">
@@ -45,8 +45,10 @@
               </ul>
             </div>
             <div class="mt-5">
-              <button class="CreateButton" type="submit" @click="createVoting()">Create</button>
-              <button class="ResetButton" type="reset">Reset</button>
+              <div>
+                <button class="CreateButton" type="submit" @click.self="createVoting()">Create</button>
+                <button class="ResetButton" type="reset">Reset</button>
+              </div>
             </div>
           </form>
         </div>
@@ -159,7 +161,8 @@ export default {
           },
           fonts: { default: { active: true } }
         }
-      }, (err, result) => {
+      }
+      , (err, result) => {
         if (!err && result && result.event === 'success') {
           console.log('Upload Widget event - ', result.info)
           const imagePath = result.info.path

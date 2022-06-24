@@ -1,16 +1,15 @@
 <template>
   <div class="gimmespace">
     <div class="body">
-      <div v-if="isAuthenticated">User who Owns this: {{ this.votingOwner }} .........Users who Voted this:
-        {{ usersVoted }} !!
-      </div>
       <div class="own">
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`">
             <h5
               class="owncard-title">{{ voting.title }} </h5>
           </router-link>
-          von {{ voting.userName }}
+          <div class="ownerName">
+            from: {{ voting.userName }}
+          </div>
           <div class="row">
             <div class="column">
               <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
@@ -19,7 +18,7 @@
           </div>
           <div class="owncard-body">
             <div v-if="isAuthenticated">
-              <table class="tab" v-if="!this.usersVoted.includes(this.user.sub)">
+              <table class="tab">
                 <tr>
                   <th>
                     <p class="owncard-text">
@@ -67,7 +66,16 @@
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
-              <button id="del" type="submit" class="btn btn-danger" @click="delete1">{{ deletebutton }}</button>
+              <div v-if="deletebutton">
+                <button type="submit" class="deleted" @click="delete1">
+                  <input type="button" class="deleted" value="Successfully deleted ✓" />
+                </button>
+              </div>
+              <div v-else>
+                <button type="submit" class="delete-button" @click="delete1">
+                  Delete your Voting
+                </button>
+              </div>
             </div>
             <p></p>
             <div class="input-group mb-2 mr-sm-2">
@@ -104,7 +112,7 @@ export default {
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
       votingOwner: this.voting.ownerId,
-      deletebutton: 'Delete Your Voting'
+      deletebutton: false
     }
   },
   setup (props) {
@@ -166,6 +174,7 @@ export default {
           redirect: 'follow'
         }
         fetch(endpoint, requstOptions)
+        this.usersVoted.push(this.user.sub)
         this.votes1 = this.votes1 + 1
         this.usersVoted.push(this.user.sub)
       }
@@ -188,11 +197,13 @@ export default {
           redirect: 'follow'
         }
         fetch(endpoint, requstOptions)
+        this.usersVoted.push(this.user.sub)
         this.votes2 = this.votes2 + 1
         this.usersVoted.push(this.user.sub)
       }
     },
     delete1 () {
+      this.deletebutton = true
       const thisid = this.voting.id
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings/' + thisid
       const requstOptions = {
@@ -201,6 +212,7 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
+      this.$forceUpdate()
     }
   }
 }
@@ -274,10 +286,62 @@ export default {
 .VotingButton {
   background-color: #76c1ff;
   border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
 }
 
+.VotingButton:hover {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
+  background-color: red;
+  color: white;
+}
+
+.deleted {
+  border-radius: 12px;
+  padding: 5px 30px;
+  border: none;
+  background-color: #15bd0e;
+  color: #000000;
+}
+
+.delete-button:hover {
+  background-color: #b90303;
+  color: white;
+}
 .owncard {
   background-color: #f1f1e4;
   border: 5px outset goldenrod;
+}
+
+.ownerName {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
+  font:  20px "Comic Sans MS", cursive;
+}
+
+.owncard-title {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
+  font:  20px "Comic Sans MS", cursive;
+}
+
+.owncard-title:hover{
+  color: #0000008C;
+
+  background-color: transparent;
+  color: blue;
 }
 </style>

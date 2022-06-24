@@ -6,6 +6,7 @@ import Voting from '../views/Voting.vue'
 import Profile from '@/views/Profile'
 import Login from '@/views/Login'
 import Guide from '@/views/Guide'
+import MyVotings from '@/views/MyVotings'
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
     path: '/votings/:id',
     name: 'Voting',
     component: Voting
+  },
+  {
+    path: '/myvotings',
+    name: 'MyVotings',
+    component: MyVotings
   },
   {
     path: '/login',
