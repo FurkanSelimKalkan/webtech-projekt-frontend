@@ -1,6 +1,6 @@
 <template>
   <h1 class="header1">User Profile</h1>
-  <section style="background-color: white;">
+  <section style="background-color: #fbf7ff;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-6 mb-4 mb-lg-0">
@@ -10,8 +10,7 @@
                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                 <img :src="user.picture"
                      alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
-                <h5>{{ user.nickname }}</h5>
-                <p>User</p>
+                <h5> Username: {{ user.nickname }}</h5>
               </div>
               <div class="col-md-8">
                 <div class="card-body p-4">
@@ -48,11 +47,6 @@
                         <img :src=this.qrCodeUrl alt="" title="" />
                       </p>
                     </div>
-                  </div>
-                  <div class="d-flex justify-content-start">
-                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                   </div>
                 </div>
               </div>

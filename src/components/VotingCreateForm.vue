@@ -1,13 +1,13 @@
 <template>
   <div>
-    <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
+    <button id="hallo" class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
             aria-controls="#votings-create-offcanvas">
       <i class="bi bi-voting-plus-fill">Create Voting</i>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="votings-create-offcanvas" aria-labelledby="offcanvas-label">
       <div v-if="isAuthenticated">
         <div class="offcanvas-header">
-            <h5 id="offcanvas-label"> Create new Voting</h5>
+          <h5 class="offCanvasText" id="offcanvas-label"> Create new Voting</h5>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div>
@@ -17,22 +17,22 @@
         <div class="offcanvas-body">
           <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
             <div class="mb-3">
-              <label for="title" class="form-label">Title (5-20 Characters)</label>
-              <input type=text class="form-control" id=title v-model=title required>
+              <label for="title" class="form-label">Title</label>
+              <input type=text class="form-control" id=title minlength="5" maxlength="20" placeholder="5-20 characters" v-model=title required>
               <div class="invalid-feedback">
                 Please provide a Title with 5-20 Characters.
               </div>
             </div>
             <div class="mb-3">
-              <label for="image1" class="form-label">Image1</label>
-              <input type=text class="form-control" id=image1 v-model=image1 required>
+              <label for="image1" class="form-label">Image 1</label>
+              <input type=text class="form-control" id=image1 placeholder="Paste Link or use Button above" v-model=image1 required>
               <div class="invalid-feedback">
                 Please upload a Image.
               </div>
             </div>
             <div class="mb-3">
-              <label for=image2 class="form-label">Image2</label>
-              <input type=text class="form-control" id=image2 v-model=image2 required>
+              <label for=image2 class="form-label">Image 2</label>
+              <input type=text class="form-control" id=image2 placeholder="Paste Link or use Button above" v-model=image2 required>
               <div class="invalid-feedback">
                 Please upload a image .
               </div>
@@ -233,7 +233,7 @@ export default {
 }
 
 .CreateButton {
-  background-color: #2c57fd;
+  background-color: #0088dc;
   border: none;
   color: white;
   padding: 5px;
@@ -242,6 +242,9 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius:12px;
+}
+.CreateButton:hover {
+  background-color: #24009f;
 }
 
 .ResetButton {
@@ -254,6 +257,9 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius:12px;
+}
+.ResetButton:hover {
+  background-color: #940202
 }
 
 .uploadImageButton {
@@ -272,4 +278,25 @@ export default {
   background-color: #148f56;
 }
 
+.form-label {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.offCanvasText {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#hallo:hover {
+  background-color: rgba(30, 211, 5, 0.94);
+}
 </style>
