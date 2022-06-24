@@ -1,51 +1,53 @@
 <template>
-  <h1 class="header1">User Profile</h1>
-  <section style="background-color: #fbf7ff;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-lg-6 mb-4 mb-lg-0">
-          <div class="card mb-3" style="border-radius: .5rem;">
-            <div class="row g-0">
-              <div class="col-md-4 gradient-custom text-center text-white"
-                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img :src="user.picture"
-                     alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
-                <h5> Username: {{ user.nickname }}</h5>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body p-4">
-                  <h6>Information</h6>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                    <div class="col-6 mb-3">
-                      <h6>Email</h6>
-                      <p class="text-muted">{{ user.email }}</p>
+  <div v-if="isAuthenticated">
+    <h1 class="header1">User Profile</h1>
+    <section style="background-color: #fbf7ff;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="card mb-3" style="border-radius: .5rem;">
+              <div class="row g-0">
+                <div class="col-md-4 gradient-custom text-center text-white"
+                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  <img :src="user.picture"
+                       alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
+                  <h5> Username: {{ user.nickname }}</h5>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body p-4">
+                    <h6>Information</h6>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+                      <div class="col-6 mb-3">
+                        <h6>Email</h6>
+                        <p class="text-muted">{{ user.email }}</p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6>verified</h6>
+                        <p class="text-muted"> {{ user.email_verified }}</p>
+                      </div>
                     </div>
-                    <div class="col-6 mb-3">
-                      <h6>verified</h6>
-                      <p class="text-muted" > {{ user.email_verified }}</p>
-                    </div>
-                  </div>
-                  <h6>Statistics</h6>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                    <div class="col-6 mb-3">
-                      <h6>Created Voting Polls</h6>
-                      <p class="text-muted">{{ this.numberofvotings }}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h6>Received Votes</h6>
-                      <p class="text-muted">{{ numberOfExternalVotes }}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h6>Distributed Votes</h6>
-                      <p class="text-muted">{{ this.numberOfVotes }}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h6>Share our App with this QR-Code</h6>
-                      <p class="text-muted">
-                        <img :src=this.qrCodeUrl alt="" title="" />
-                      </p>
+                    <h6>Statistics</h6>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+                      <div class="col-6 mb-3">
+                        <h6>Created Voting Polls</h6>
+                        <p class="text-muted">{{ this.numberofvotings }}</p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6>Received Votes</h6>
+                        <p class="text-muted">{{ numberOfExternalVotes }}</p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6>Distributed Votes</h6>
+                        <p class="text-muted">{{ this.numberOfVotes }}</p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6>Share our App with this QR-Code</h6>
+                        <p class="text-muted">
+                          <img :src=this.qrCodeUrl alt="" title=""/>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -54,16 +56,22 @@
           </div>
         </div>
       </div>
+    </section>
+  </div>
+  <div v-else> You have been logged out! Please
+    <LoginButton>Login</LoginButton>
     </div>
-  </section>
-
 </template>
 <script>
 // Composition API
 
 import { useAuth0 } from '@auth0/auth0-vue'
+import LoginButton from '@/components/LoginButton'
 
 export default {
+  components: {
+    LoginButton
+  },
   setup () {
     const {
       loginWithRedirect,
