@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
+    <button id="hallo" class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#votings-create-offcanvas"
             aria-controls="#votings-create-offcanvas">
       <i class="bi bi-voting-plus-fill">Create Voting</i>
     </button>
@@ -233,7 +233,7 @@ export default {
 }
 
 .CreateButton {
-  background-color: #2c57fd;
+  background-color: #0088dc;
   border: none;
   color: white;
   padding: 5px;
@@ -242,6 +242,9 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius:12px;
+}
+.CreateButton:hover {
+  background-color: #24009f;
 }
 
 .ResetButton {
@@ -254,6 +257,9 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius:12px;
+}
+.ResetButton:hover {
+  background-color: #940202
 }
 
 .uploadImageButton {
@@ -290,4 +296,7 @@ export default {
   font-weight: bold;
 }
 
+#hallo:hover {
+  background-color: rgba(30, 211, 5, 0.94);
+}
 </style>
