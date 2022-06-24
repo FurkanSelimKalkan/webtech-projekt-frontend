@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Votings</h1>
+    <h1>My Votings</h1>
     <div class="container-fluid">
       <voting-card-list-owner :votings="this.votings" @created="addVoting"></voting-card-list-owner>
     </div>
