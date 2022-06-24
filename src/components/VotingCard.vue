@@ -7,7 +7,9 @@
             <h5
               class="owncard-title">{{ voting.title }} </h5>
           </router-link>
-          von {{ voting.userName }}
+          <div class="ownerName">
+            from: {{ voting.userName }}
+          </div>
           <div class="row">
             <div class="column">
               <img :src="voting.image1" class="image1" :alt=" voting.image1"></div>
@@ -314,5 +316,30 @@ export default {
 .owncard {
   background-color: #f1f1e4;
   border: 5px outset goldenrod;
+}
+
+.ownerName {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
+  font:  20px "Comic Sans MS", cursive;
+}
+
+.owncard-title {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
+  font:  20px "Comic Sans MS", cursive;
+}
+
+.owncard-title:hover{
+  color: #0000008C;
+
+  background-color: transparent;
+  color: blue;
 }
 </style>
