@@ -82,7 +82,7 @@
               <div class="input-group-prepend">
               </div>
               <input type="text" class="form-control" id="inlineFormInputGroupUsername2" v-model="value">
-              <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
+                <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default {
     }
   },
   setup (props) {
-    const value = ref('https://this-or-that-webapp-frontend.herokuapp.com/votings/' + props.voting.id)
+    const value = ref(process.env.VUE_APP_FRONTEND_BASE_URL + '/votings/' + props.voting.id)
     const {
       loginWithRedirect,
       user,
@@ -342,4 +342,5 @@ export default {
   background-color: transparent;
   color: blue;
 }
+
 </style>
