@@ -18,7 +18,7 @@
           </div>
           <div class="owncard-body">
             <div v-if="isAuthenticated">
-              <table class="tab">
+              <table class="tab" v-if="!this.usersVoted.includes(this.user.sub)">>
                 <tr>
                   <th>
                     <p class="owncard-text">
