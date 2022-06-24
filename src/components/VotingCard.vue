@@ -326,7 +326,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  20px "Comic Sans MS", cursive;
+  font:  30px "Brush Script MT", cursive;
 }
 
 .owncard-title {
@@ -335,7 +335,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  20px "Comic Sans MS", cursive;
+  font:  20px "Brush Script MT", cursive;
 }
 
 .owncard-title:hover{
