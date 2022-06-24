@@ -1,9 +1,6 @@
 <template>
   <div class="gimmespace">
     <div class="body">
-      <div v-if="isAuthenticated">User who Owns this: {{ this.votingOwner }} .........Users who Voted this:
-        {{ usersVoted }} !!
-      </div>
       <div class="own">
         <div class="owncard">
           <router-link class="titlelink" :to="`/votings/${voting.id}`">

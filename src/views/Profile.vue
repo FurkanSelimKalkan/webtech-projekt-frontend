@@ -1,6 +1,5 @@
 <template>
-  {{ user }}
-  <h1>User Profile</h1>
+  <h1 class="header1">User Profile</h1>
   <section style="background-color: white;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -130,6 +129,15 @@ export default {
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+
+.header1 {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 </style>

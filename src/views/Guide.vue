@@ -15,4 +15,13 @@ export default {
 .header1 {
   color: #172b4d;
 }
+
+.header1 {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 40px;
+  font-weight: bold;
+}
 </style>

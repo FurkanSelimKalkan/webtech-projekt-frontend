@@ -1,6 +1,6 @@
 <template>
   <div>
-  <h1>Votings</h1>
+  <h1 class="header1">Votings</h1>
   <div class="container-fluid">
     <votings-card-list :votings="this.votings" @created="addVoting"></votings-card-list>
   </div>
@@ -70,5 +70,13 @@ export default {
 </script>
 
 <style scoped>
+.header1 {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 40px;
+  font-weight: bold;
+}
 
 </style>
