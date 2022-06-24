@@ -324,7 +324,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  30px "Brush Script MT", cursive;
+  font:  20px "Luminary", cursive;
 }
 
 .owncard-title {
@@ -333,7 +333,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
-  font:  20px "Brush Script MT", cursive;
+  font:  30px "Bradley Hand", cursive;
 }
 
 .owncard-title:hover{

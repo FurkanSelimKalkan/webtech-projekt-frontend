@@ -18,7 +18,7 @@
           <form class="text-start needs-validation novalidate" id="votings-create-form" novalidate>
             <div class="mb-3">
               <label for="title" class="form-label">Title (5-20 Characters)</label>
-              <input type=text class="form-control" id=title v-model=title required>
+              <input type=text class="form-control" id=title minlength="5" maxlength="20" v-model=title required>
               <div class="invalid-feedback">
                 Please provide a Title with 5-20 Characters.
               </div>
