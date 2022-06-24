@@ -1,7 +1,8 @@
 <template>
+  <h1 class="header1">Guide</h1>
   <Carousel>
     <Slide v-for="item in Items" :key="item">
-      <p v-html="item"></p>
+      <img :src="item" />
     </Slide>
 
     <template #addons>
@@ -21,10 +22,14 @@ export default {
   data () {
     return {
       Items: [
-        '<img alt="Home Logo" src="/img/logo.00e13b35.png" width="500" height="600" data-v-41458b80="">',
-        '<img alt="Logo" src="../assets/images/logo" width="500" height="600">',
-        '<img src="./src/assets/thisthat.png" alt="Logo2" width="500" height="600">',
-        '<img src="./src/assets/thisthat2.png" alt="Logo3" width="500" height="600">'
+        'https://i.ibb.co/XW8qbdw/1.png',
+        'https://i.ibb.co/yQmTjtX/2.png',
+        'https://i.ibb.co/f4WszrM/3.png',
+        'https://i.ibb.co/3sk0rZc/4.png',
+        'https://i.ibb.co/5smhSdn/5.png',
+        'https://i.ibb.co/DRgrdx5/6.png',
+        'https://i.ibb.co/cTRDLVX/7.png',
+        'https://i.ibb.co/px79YXv/8.png'
       ]
     }
   }
@@ -40,5 +45,14 @@ export default {
 .carousel__next {
   box-sizing: content-box;
   border: 5px solid white;
+}
+
+.header1 {
+  color: #0000008C;
+
+  background-color: transparent;
+  border: transparent;
+  font-size: 40px;
+  font-weight: bold;
 }
 </style>
