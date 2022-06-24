@@ -1,6 +1,6 @@
 <template>
   <h1 class="header1">User Profile</h1>
-  <section style="background-color: white;">
+  <section style="background-color: #fbf7ff;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-6 mb-4 mb-lg-0">

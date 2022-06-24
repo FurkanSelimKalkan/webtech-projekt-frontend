@@ -60,5 +60,13 @@ nav a.router-link-exact-active {
 
 .allApp{
   background-color: #fbf7ff;
+  position: fixed;
+  top: 0;
+  bottom:0;
+
+  width: 100vw; /* viewport width */
+  height: 100vh; /* viewport height */
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
