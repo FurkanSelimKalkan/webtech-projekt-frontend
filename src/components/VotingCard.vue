@@ -49,9 +49,9 @@
                     </p>
                   </th>
                 </tr>
-                <td><span v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes1 }} Votes</span>
+                <td><span>{{ votes1 }} Votes</span>
                 </td>
-                <td v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">{{ votes2 }} Votes</td>
+                <td>{{ votes2 }} Votes</td>
               </table>
             </div>
             <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
@@ -72,8 +72,8 @@
                   <input type="button" class="deleted" value="Successfully deleted ✓"/>
                 </button>
               </div>
-              <div v-else>
-                <button type="submit" class="delete-button" @click="delete1">
+              <div v-else id="show">
+                <button type="submit" class="deletebutton" @click="delete1">
                   Delete your Voting
                 </button>
               </div>
@@ -294,7 +294,7 @@ export default {
   color: white;
 }
 
-.delete-button {
+.deletebutton {
   border-radius: 12px;
   padding: 5px 30px;
   border: none;
@@ -310,7 +310,7 @@ export default {
   color: #000000;
 }
 
-.delete-button:hover {
+.deletebutton:hover {
   background-color: #b90303;
   color: white;
 }
