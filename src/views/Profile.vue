@@ -58,7 +58,7 @@
       </div>
     </section>
   </div>
-  <div v-else> You have been logged out! Please
+  <div v-else this.$forceUpdate()> You have been logged out! Please
     <LoginButton>Login</LoginButton>
     </div>
 </template>
