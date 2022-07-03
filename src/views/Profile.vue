@@ -3,7 +3,7 @@
     <h1 class="header1">User Profile</h1>
     <br>
     <br>
-    <section style="background-color: #fbf7ff; margin-right: 15%; margin-left: 15%">
+    <section style="background-color: #fbf7ff; margin-right: 15%; margin-left: 15% ">
       <div>
         <div>
           <div>
