@@ -334,7 +334,27 @@ export default {
 
 .owncard {
   background-color: #f1f1e4;
-  border: 5px outset goldenrod;
+  border: 5px solid;
+  border-image:
+  linear-gradient(
+    #8cbaff,
+    #418dff,
+    #1658e5) 1;
+  animation: rotate
+  2s
+  ease-in
+  infinite;
+  }
+
+@keyframes rotate {
+  50%{
+    border-image:
+    linear-gradient(
+    360deg,
+    #98ff00,
+    #000000,
+    #487af5) 1;
+  }
 }
 
 .ownerName {

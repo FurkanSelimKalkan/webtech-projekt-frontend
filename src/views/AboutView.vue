@@ -58,7 +58,7 @@
                       </div>
                       <div id="collapse-3" class="collapse" role="tabpanel" aria-labelledby="heading-3" data-parent="#accordion">
                         <div class="card-body">
-                          <p class="mb-0">blabla</p>
+                          <p class="mb-0">Christopher.Leibiger@Student.HTW-Berlin.de & Furkan.Kalkan@Student.HTW-Berlin.de</p>
                         </div>
                       </div>
                     </div>

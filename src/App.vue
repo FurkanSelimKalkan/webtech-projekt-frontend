@@ -37,6 +37,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  minWidth: 100vw;
+  background-color: #fdf8f8;
 }
 
 body {
@@ -66,6 +71,6 @@ nav a.router-link-exact-active {
 
   width: 100%;
   height: 100%;
-  background:rgba(255,255,255,0.5);
+  background: rgba(245, 237, 237, 0.5);
 }
 </style>

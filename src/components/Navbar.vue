@@ -30,7 +30,7 @@
         <li><hr class="dropdown-divider"></li>
         <li class="logout"><a class="dropdown-item" href="#">
           <div v-if="isAuthenticated">
-            <LogoutButton>Log out</LogoutButton>
+              <LogoutButton>Log out</LogoutButton>
           </div>
         </a></li>
       </ul>
