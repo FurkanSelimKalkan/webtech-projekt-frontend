@@ -42,9 +42,9 @@ export default {
   width: 100%;
   minWidth: 100vw;
   background-color: #fffbfb;
-  background: linear-gradient(-45deg, #ee7752, #e2dfff, #1eb6ea, #23d5ab);
+  background: linear-gradient(-45deg, #f5d4c9, #eceaff, #35c5ff, #28e5b8);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 3s ease infinite;
 }
 
 @keyframes gradient {
