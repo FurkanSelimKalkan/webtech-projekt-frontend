@@ -348,10 +348,7 @@ export default {
     #8cbaff,
     #418dff,
     #1658e5) 1;
-  animation: rotate
-  2s
-  ease-in
-  infinite;
+  animation: rotate 4s ease infinite;
   }
 
 @keyframes rotate {
