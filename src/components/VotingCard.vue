@@ -349,6 +349,7 @@ export default {
     #418dff,
     #1658e5) 1;
   animation: rotate 4s ease infinite;
+  display: inline-block;
   }
 
 @keyframes rotate {
@@ -359,6 +360,7 @@ export default {
     #98ff00,
     #000000,
     #487af5) 1;
+    display: inline-block;
   }
 }
 
