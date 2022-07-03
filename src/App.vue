@@ -41,7 +41,7 @@ export default {
   min-height: 100vh;
   width: 100%;
   minWidth: 100vw;
-  background-color: #fdf8f8;
+  background-color: #fffbfb;
 }
 
 body {
