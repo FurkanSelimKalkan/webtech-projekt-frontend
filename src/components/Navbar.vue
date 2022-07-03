@@ -19,7 +19,7 @@
     </div>
     <div v-if="isAuthenticated">
     <li class="dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 150px">Account</a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
         <li><a class="dropdown-item" href="#">
           <router-link class="dropdown-item" to="/profile">Profile</router-link>
