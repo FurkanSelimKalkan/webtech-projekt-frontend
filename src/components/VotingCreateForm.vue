@@ -274,7 +274,7 @@ export default {
 }
 
 .offcanvas-header {
-  background-color: #148f56;
+  background-color: #158f10;
 }
 
 .form-label {
@@ -287,7 +287,7 @@ export default {
 }
 
 .offCanvasText {
-  color: #0000008C;
+  color: white;
 
   background-color: transparent;
   border: transparent;
