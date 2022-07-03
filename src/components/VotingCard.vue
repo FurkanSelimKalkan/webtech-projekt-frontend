@@ -116,7 +116,8 @@
               <div class="input-group-prepend">
               </div>
               <input type="text" class="form-control" id="inlineFormInputGroupUsername2" v-model="value">
-              <button class="btn btn-warning" @click="toClipboard(value)">Copy Permalink</button>
+              <button v-if="!copyButton" class="btn btn-warning" @click="toClipboard(value), copyMakeTrue() ">Copy Permalink</button>
+              <button v-if="copyButton" id="ButtonTrue" class="btn btn-warning" @click="toClipboard(value)">Copied ✓</button>
             </div>
           </div>
         </div>
@@ -146,7 +147,8 @@ export default {
       votingid: this.voting.id,
       usersVoted: this.voting.votedUsers,
       votingOwner: this.voting.ownerId,
-      deletebutton: false
+      deletebutton: false,
+      copyButton: false
     }
   },
   setup (props) {
@@ -265,6 +267,9 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
+    },
+    copyMakeTrue () {
+      this.copyButton = true
     }
   }
 }
@@ -428,6 +433,10 @@ export default {
   transform: translate(-50%, -50%);
   font: 16px "Bradley Hand", cursive;
   font-size: 25px;
+}
+
+#ButtonTrue {
+  background-color: #d7d703;
 }
 
 </style>
