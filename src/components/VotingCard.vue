@@ -22,18 +22,27 @@
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
+                      <button   v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
                     </p>
                   </th>
                   <th>
                     <p class="owncard-text">
-                      <button class="VotingButton" type="submit" @click="putUpvote2">Vote</button>
+                      <button   v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit" @click="putUpvote2">Vote</button>
                     </p>
                   </th>
                 </tr>
-                <td><span>{{ votes1 }} Votes</span></td>
-                <td>{{ votes2 }} Votes</td>
+                <td><span><transition name="slide-fade" mode="out-in">
+                  <div :key="votes1">
+                    {{ votes1 }} Votes
+                  </div>
+                </transition></span></td>
+                <td><transition name="slide-fade" mode="out-in">
+                  <div :key="votes2">
+                    {{ votes2 }} Votes
+                  </div>
+                </transition></td>
               </table>
+
             </div>
             <div v-else>
               <table class="tab">
@@ -343,6 +352,18 @@ export default {
 
   background-color: transparent;
   color: blue;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 
 </style>
