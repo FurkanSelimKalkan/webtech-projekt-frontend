@@ -117,7 +117,7 @@
               </div>
               <input type="text" class="form-control" id="inlineFormInputGroupUsername2" v-model="value">
               <button v-if="!copyButton" class="btn btn-warning" @click="toClipboard(value), copyMakeTrue() ">Copy Permalink</button>
-              <button v-if="copyButton" id="ButtonTrue" class="btn btn-warning" @click="toClipboard(value)">Successfully copied ✓</button>
+              <button v-if="copyButton" id="ButtonTrue" class="btn btn-warning" @click="toClipboard(value)">Copied ✓</button>
             </div>
           </div>
         </div>
@@ -436,7 +436,7 @@ export default {
 }
 
 #ButtonTrue {
-  background-color: yellow;
+  background-color: #d7d703;
 }
 
 </style>
