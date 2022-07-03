@@ -66,9 +66,17 @@
                     </p>
                   </th>
                 </tr>
-                <td><span>{{ votes1 }} Votes</span>
+                <td><span><div class="content">
+                      <hallo2 class="votesText">
+                        {{ votes1 }} Votes
+                      </hallo2>
+                    </div></span>
                 </td>
-                <td>{{ votes2 }} Votes</td>
+                <td><div class="content">
+                  <hallo2 class="votesText">
+                    {{ votes2 }} Votes
+                  </hallo2>
+                </div></td>
               </table>
             </div>
             <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
@@ -400,6 +408,7 @@ export default {
   position: absolute;
   transform: translate(-50%, -50%);
   font: 16px "Bradley Hand", cursive;
+  font-size: 25px;
 }
 
 .content hallo2 {
@@ -408,5 +417,7 @@ export default {
   position: absolute;
   transform: translate(-50%, -50%);
   font: 16px "Bradley Hand", cursive;
+  font-size: 25px;
 }
+
 </style>
