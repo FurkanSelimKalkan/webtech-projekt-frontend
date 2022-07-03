@@ -353,18 +353,6 @@ export default {
   position:relative;
   }
 
-@keyframes rotate {
-  50%{
-    border-image:
-    linear-gradient(
-    -45deg,
-    #98ff00,
-    #000000,
-    #487af5) 1;
-    display: inline-block;
-  }
-}
-
 .ownerName {
   color: #0000008C;
 
