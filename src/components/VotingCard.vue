@@ -342,16 +342,7 @@ export default {
 
 .owncard {
   background-color: #f1f1e4;
-  border: 5px solid;
-  border-image:
-  linear-gradient(
-    #8cbaff,
-    #418dff,
-    #1658e5) 1;
-  animation: rotate 4s ease infinite;
-  display: inline-block;
-  position:relative;
-  }
+}
 
 .ownerName {
   color: #0000008C;
