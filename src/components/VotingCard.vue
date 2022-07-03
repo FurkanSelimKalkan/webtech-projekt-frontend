@@ -356,7 +356,7 @@ export default {
   50%{
     border-image:
     linear-gradient(
-    360deg,
+    -45deg,
     #98ff00,
     #000000,
     #487af5) 1;
