@@ -350,6 +350,7 @@ export default {
     #1658e5) 1;
   animation: rotate 4s ease infinite;
   display: inline-block;
+  position:relative;
   }
 
 @keyframes rotate {
