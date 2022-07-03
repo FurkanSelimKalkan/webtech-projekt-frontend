@@ -22,12 +22,16 @@
                 <tr>
                   <th>
                     <p class="owncard-text">
-                      <button   v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit" @click="putUpvote1">Vote</button>
+                      <button v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit"
+                              @click="putUpvote1">Vote
+                      </button>
                     </p>
                   </th>
                   <th>
                     <p class="owncard-text">
-                      <button   v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit" @click="putUpvote2">Vote</button>
+                      <button v-if="!this.usersVoted.includes(this.user.sub)" class="VotingButton" type="submit"
+                              @click="putUpvote2">Vote
+                      </button>
                     </p>
                   </th>
                 </tr>
@@ -40,15 +44,17 @@
                     </div>
                   </div>
                 </transition></span></td>
-                <td><transition name="slide-fade" mode="out-in">
-                  <div :key="votes2">
-                    <div class="content">
-                      <hallo2>
-                        {{ votes2 }} Votes
-                      </hallo2>
+                <td>
+                  <transition name="slide-fade" mode="out-in">
+                    <div :key="votes2">
+                      <div class="content">
+                        <hallo2>
+                          {{ votes2 }} Votes
+                        </hallo2>
+                      </div>
                     </div>
-                  </div>
-                </transition></td>
+                  </transition>
+                </td>
               </table>
 
             </div>
@@ -72,11 +78,13 @@
                       </hallo2>
                     </div></span>
                 </td>
-                <td><div class="content">
-                  <hallo2 class="votesText">
-                    {{ votes2 }} Votes
-                  </hallo2>
-                </div></td>
+                <td>
+                  <div class="content">
+                    <hallo2 class="votesText">
+                      {{ votes2 }} Votes
+                    </hallo2>
+                  </div>
+                </td>
               </table>
             </div>
             <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
@@ -87,7 +95,7 @@
                   :type="doughnutChart.type"
                   :data="doughnutChart.data"
                   :options="doughnutChart.options"
-                ></vue3-chart-js >
+                ></vue3-chart-js>
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
@@ -182,6 +190,25 @@ export default {
     }
   },
   methods: {
+    update () {
+      this.doughnutChart.options.plugins.title = {
+        text: 'Updated Chart',
+        display: true
+      }
+      this.doughnutChart.data.labels = ['1', '2']
+      this.doughnutChart.data.datasets = [
+        {
+          backgroundColor: [
+            '#ffb619',
+            '#E46651'
+          ],
+          data: [this.votes1, this.votes2]
+        }
+      ]
+
+      this.chartRef.value.update(250)
+      return this.doughnutChart
+    },
     putUpvote1 () {
       if (this.usersVoted.includes(this.user.sub) === false) {
         const thisid = this.voting.id
@@ -202,6 +229,7 @@ export default {
         fetch(endpoint, requstOptions)
         this.usersVoted.push(this.user.sub)
         this.votes1 = this.votes1 + 1
+        this.update()
       }
     },
     putUpvote2 () {
@@ -224,6 +252,7 @@ export default {
         fetch(endpoint, requstOptions)
         this.usersVoted.push(this.user.sub)
         this.votes2 = this.votes2 + 1
+        this.update()
       }
     },
     delete1 () {
@@ -236,7 +265,6 @@ export default {
       }
       fetch(endpoint, requstOptions).catch(error => console.log('error', error))
       this.deletebutton = 'Successfully deleted'
-      this.$forceUpdate()
     }
   }
 }
@@ -372,11 +400,14 @@ export default {
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
+
 .slide-fade-leave-active {
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
+
 .slide-fade-enter, .slide-fade-leave-to
-  /* .slide-fade-leave-active for <2.1.8 */ {
+  /* .slide-fade-leave-active for <2.1.8 */
+{
   transform: translateX(10px);
   opacity: 0;
 }
