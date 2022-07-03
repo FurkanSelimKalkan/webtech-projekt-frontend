@@ -1,8 +1,8 @@
 <template>
-  <div v-if="isAuthenticated">
+  <div class="maybe" v-if="isAuthenticated">
     <h1 class="header1">User Profile</h1>
     <section style="background-color: #fbf7ff;">
-      <div class="container py-5 h-100">
+      <div id="halliHallo" class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-6 mb-4 mb-lg-0">
             <div class="card mb-3" style="border-radius: .5rem;">
