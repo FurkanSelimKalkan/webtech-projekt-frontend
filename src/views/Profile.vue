@@ -125,7 +125,7 @@ export default {
 
 <style>
 .gradient-custom {
-  /* fallback for old browsers */
+
   background: #f6d365;
 
   /* Chrome 10-25, Safari 5.1-6 */
