@@ -33,12 +33,20 @@
                 </tr>
                 <td><span><transition name="slide-fade" mode="out-in">
                   <div :key="votes1">
-                    {{ votes1 }} Votes
+                    <div class="content">
+                      <hallo1>
+                       {{ votes1 }} Votes
+                    </hallo1>
+                    </div>
                   </div>
                 </transition></span></td>
                 <td><transition name="slide-fade" mode="out-in">
                   <div :key="votes2">
-                    {{ votes2 }} Votes
+                    <div class="content">
+                      <hallo2>
+                        {{ votes2 }} Votes
+                      </hallo2>
+                    </div>
                   </div>
                 </transition></td>
               </table>
@@ -63,7 +71,7 @@
                 <td>{{ votes2 }} Votes</td>
               </table>
             </div>
-            <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
+            <div v-if="isAuthenticated">
               <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
                 <vue3-chart-js
                   :id="doughnutChart.id"
@@ -71,7 +79,7 @@
                   :type="doughnutChart.type"
                   :data="doughnutChart.data"
                   :options="doughnutChart.options"
-                ></vue3-chart-js>
+                ></vue3-chart-js >
               </div>
             </div>
             <div v-if="isAuthenticated && this.votingOwner === this.user.sub">
@@ -137,7 +145,7 @@ export default {
       id: 'doughnut',
       type: 'doughnut',
       data: {
-        labels: ['Left Image 1', 'Right Image 2'],
+        labels: ['Left Image', 'Right Image'],
         datasets: [
           {
             backgroundColor: [
@@ -366,4 +374,19 @@ export default {
   opacity: 0;
 }
 
+.content hallo1 {
+  color: #0000008C;
+  font-size: 8em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font: 16px "Bradley Hand", cursive;
+}
+
+.content hallo2 {
+  color: #0000008C;
+  font-size: 8em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font: 16px "Bradley Hand", cursive;
+}
 </style>
