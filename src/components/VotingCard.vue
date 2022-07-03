@@ -71,7 +71,7 @@
                 <td>{{ votes2 }} Votes</td>
               </table>
             </div>
-            <div v-if="isAuthenticated">
+            <div v-if="isAuthenticated && this.usersVoted.includes(this.user.sub)">
               <div style="display: flex;flex-direction:column; margin-right: 30%; margin-left: 30%">
                 <vue3-chart-js
                   :id="doughnutChart.id"
