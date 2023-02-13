@@ -170,6 +170,7 @@ export default {
       })
     },
     createVoting () {
+      debugger
       const valid = this.validate()
       if (valid) {
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/votings'
